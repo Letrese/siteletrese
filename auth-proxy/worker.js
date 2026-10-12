@@ -14,7 +14,8 @@ export default {
     // 1. Rota de Início de Autenticação: redireciona para o GitHub
     if (url.pathname === '/auth') {
       const scope = url.searchParams.get('scope') || 'repo,user';
-      const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${env.GITHUB_CLIENT_ID}&scope=${encodeURIComponent(scope)}`;
+      const clientId = (env.GITHUB_CLIENT_ID || '').trim();
+      const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&scope=${encodeURIComponent(scope)}`;
       return Response.redirect(githubAuthUrl, 302);
     }
 
@@ -27,6 +28,9 @@ export default {
       }
 
       try {
+        const clientId = (env.GITHUB_CLIENT_ID || '').trim();
+        const clientSecret = (env.GITHUB_CLIENT_SECRET || '').trim();
+
         const response = await fetch('https://github.com/login/oauth/access_token', {
           method: 'POST',
           headers: {
@@ -35,9 +39,9 @@ export default {
             'User-Agent': 'Decap-CMS-OAuth-Worker'
           },
           body: JSON.stringify({
-            client_id: env.GITHUB_CLIENT_ID,
-            client_secret: env.GITHUB_CLIENT_SECRET,
-            code: code
+            client_id: clientId,
+            client_secret: clientSecret,
+            code: code.trim()
           })
         });
 
