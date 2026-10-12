@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel Administrativo | Letrese CMS</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logo.svg" />
+  <!-- Google Fonts para o painel Decap -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Estilização suave para a tela de autenticação do Decap CMS */
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      background-color: #f8fafc;
+    }
+    .cms-brand-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #2563eb, #06b6d4);
+      z-index: 99999;
+    }
+  </style>
+</head>
+<body>
+  <div class="cms-brand-banner"></div>
+
+  <!-- Decap CMS v3.x SPA Script -->
+  <script src="https://unpkg.com/decap-cms@^3.1.2/dist/decap-cms.js"></script>
+
+  <script>
+    // Registro de customização visual para o Decap CMS
+    CMS.registerPreviewStyle('/assets/css/style.css');
+  </script>
+</body>
+</html>

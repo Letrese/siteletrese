@@ -1,0 +1,39 @@
+---
+layout: default
+title: "Membros"
+---
+
+<header class="page-header">
+  <div class="container">
+    <h1 class="page-title">Membros</h1>
+    <p class="page-desc">Integrantes e colaboradores do grupo de pesquisa Letrese.</p>
+  </div>
+</header>
+
+<section class="page-content">
+  <div class="container">
+    <div class="filter-bar">
+      <div class="filter-group">
+        <button class="filter-btn active" data-member-filter="all">Todos</button>
+        <button class="filter-btn" data-member-filter="Coordenação">Coordenação</button>
+        <button class="filter-btn" data-member-filter="Pesquisadores">Pesquisadores</button>
+        <button class="filter-btn" data-member-filter="Iniciação Científica">Iniciação Científica</button>
+      </div>
+
+      <div class="search-box">
+        <input type="text" id="member-search" class="search-input" placeholder="Buscar por nome ou área..." aria-label="Buscar membro">
+      </div>
+    </div>
+
+    <div id="no-members-msg" style="display: none; padding: 2rem; text-align: center; color: var(--text-muted);">
+      Nenhum membro encontrado.
+    </div>
+
+    <div class="members-grid" id="members-list">
+      {% assign sorted_members = site.members | sort: "order" %}
+      {% for member in sorted_members %}
+        {% include member_card.html %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,60 @@
+# Configuração do Jekyll para o Portal Letrese
+title: "Letrese | Grupo de Pesquisa"
+tagline: "Letramentos, Semiótica, Educação e Tecnologias"
+description: "Portal institucional do Grupo de Pesquisa Letrese. Estudos, projetos de pesquisa, produção científica, notícias e currículo dos membros."
+url: "https://letrese.github.io"
+baseurl: "/siteletrese" # Mude para "" se utilizar domínio customizado próprio
+
+# Informações Institucionais de Contato
+email: "contato@letrese.uf.br"
+institution: "Universidade / Centro de Pesquisa"
+location: "Bloco de Humanidades e Tecnologias, Sala 304"
+
+# Markdown & Formatação
+markdown: kramdown
+permalink: /noticias/:year/:month/:day/:title/
+
+# Coleções de Conteúdo (Members e Projects)
+collections:
+  members:
+    output: true
+    permalink: /membros/:slug/
+  projects:
+    output: true
+    permalink: /projetos/:slug/
+
+# Padrões de Front Matter para Coleções
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "members"
+    values:
+      layout: "member"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+
+# Plugins compatíveis com o GitHub Pages
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Arquivos e pastas a ignorar no build estático
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - package.json
+  - package-lock.json
+  - auth-proxy
+  - dev-server.js
+  - build-local.js
+  - README.md

@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+<header class="page-header">
+  <div class="container">
+    <div class="member-profile-header">
+      {% if page.photo %}
+        <img src="{{ page.photo | relative_url }}" alt="{{ page.title }}" class="member-profile-photo" width="90" height="90">
+      {% endif %}
+      <div>
+        <span class="member-tag">{{ page.category }}</span>
+        <h1 class="page-title">{{ page.title }}</h1>
+        <p class="member-role" style="font-size: 1.05rem; margin-top: 0.25rem;">{{ page.role }}</p>
+        <p class="member-institution" style="color: var(--text-muted); font-size: 0.9rem;">{{ page.institution }}</p>
+
+        <div class="member-links" style="margin-top: 0.75rem;">
+          {% if page.lattes_url %}
+            <a href="{{ page.lattes_url }}" target="_blank" rel="noopener" class="link-academic">Currículo Lattes (CNPq)</a>
+          {% endif %}
+          {% if page.orcid %}
+            <a href="https://orcid.org/{{ page.orcid }}" target="_blank" rel="noopener" class="link-academic">ORCID</a>
+          {% endif %}
+          {% if page.email %}
+            <a href="mailto:{{ page.email }}" class="link-academic">{{ page.email }}</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="page-content">
+  <div class="container">
+    <div class="prose">
+      {{ content }}
+    </div>
+
+    <div style="margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+      <a href="{{ '/membros.html' | relative_url }}" class="link-more">&larr; Voltar para a lista de membros</a>
+    </div>
+  </div>
+</section>

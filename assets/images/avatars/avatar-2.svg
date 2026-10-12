@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d9488" />
+      <stop offset="100%" stop-color="#0f766e" />
+    </linearGradient>
+  </defs>
+  <rect width="160" height="160" rx="80" fill="url(#bg2)" />
+  <!-- Stylized Academic Avatar Icon (Male, beard) -->
+  <circle cx="80" cy="62" r="30" fill="#f8fafc" />
+  <path d="M 40 142 C 40 108 58 98 80 98 C 102 98 120 108 120 142 Z" fill="#e2e8f0" />
+  <path d="M 54 50 C 54 36 66 32 80 32 C 94 32 106 36 106 50 C 106 54 104 56 104 56 C 96 46 84 46 76 46 C 68 46 56 46 56 56 Z" fill="#334155" />
+  <path d="M 68 74 C 68 84 92 84 92 74 C 92 88 68 88 68 74 Z" fill="#334155" />
+</svg>

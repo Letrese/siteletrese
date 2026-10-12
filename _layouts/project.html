@@ -1,0 +1,50 @@
+---
+layout: default
+---
+
+<header class="page-header">
+  <div class="container">
+    <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem;">
+      <span class="status-badge {% if page.status == 'Em andamento' %}status-ongoing{% else %}status-completed{% endif %}">
+        {{ page.status }}
+      </span>
+      <span style="color: var(--text-muted); font-size: 0.9rem;">
+        Período: {{ page.start_year }} — {{ page.end_year | default: "Atual" }}
+      </span>
+    </div>
+
+    <h1 class="page-title">{{ page.title }}</h1>
+    <p class="page-desc" style="margin-top: 0.5rem;">Coordenação: <strong>{{ page.coordinator }}</strong></p>
+
+    {% if page.funding %}
+      <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.25rem;">
+        Agência de fomento / Apoio: <strong>{{ page.funding }}</strong>
+      </p>
+    {% endif %}
+
+    {% if page.team %}
+      <div style="margin-top: 0.75rem; font-size: 0.9rem; color: var(--text-secondary);">
+        <strong>Equipe:</strong> {{ page.team | join: ", " }}
+      </div>
+    {% endif %}
+  </div>
+</header>
+
+<section class="page-content">
+  <div class="container">
+    {% if page.summary %}
+      <div class="summary-box">
+        <strong>Resumo do projeto:</strong>
+        <p style="margin: 0.5rem 0 0;">{{ page.summary }}</p>
+      </div>
+    {% endif %}
+
+    <div class="prose">
+      {{ content }}
+    </div>
+
+    <div style="margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+      <a href="{{ '/projetos.html' | relative_url }}" class="link-more">&larr; Voltar para a lista de projetos</a>
+    </div>
+  </div>
+</section>

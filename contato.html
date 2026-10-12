@@ -1,0 +1,39 @@
+---
+layout: default
+title: "Contato"
+---
+
+<header class="page-header">
+  <div class="container">
+    <h1 class="page-title">Contato</h1>
+    <p class="page-desc">Informações de contato institucional e localização do grupo.</p>
+  </div>
+</header>
+
+<section class="page-content">
+  <div class="container">
+    <div class="prose">
+      <h2>Endereço e Localização</h2>
+      <p>
+        <strong>{{ site.data.group.institution }}</strong><br>
+        {{ site.data.group.department }}<br>
+        {{ site.data.group.contact.address }}<br>
+        {{ site.data.group.contact.city_state }}
+      </p>
+
+      <h2>E-mail</h2>
+      <p>
+        <a href="mailto:{{ site.data.group.contact.email }}">{{ site.data.group.contact.email }}</a>
+      </p>
+
+      <h2>Diretório de Pesquisa</h2>
+      <p>
+        {% if site.data.group.contact.lattes_group_url %}
+          <a href="{{ site.data.group.contact.lattes_group_url }}" target="_blank" rel="noopener">
+            Espelho do grupo no Diretório CNPq
+          </a>
+        {% endif %}
+      </p>
+    </div>
+  </div>
+</section>

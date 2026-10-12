@@ -1,0 +1,51 @@
+---
+layout: default
+---
+
+<article class="post-single">
+  <header class="page-header">
+    <div class="container">
+      <div style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d/%m/%Y" }}</time>
+        {% if page.category %}
+          <span>•</span>
+          <span>{{ page.category }}</span>
+        {% endif %}
+        {% if page.author %}
+          <span>•</span>
+          <span>Por {{ page.author }}</span>
+        {% endif %}
+      </div>
+
+      <h1 class="page-title">{{ page.title }}</h1>
+
+      {% if page.summary %}
+        <p class="page-desc" style="margin-top: 0.75rem;">{{ page.summary }}</p>
+      {% endif %}
+    </div>
+  </header>
+
+  <section class="page-content">
+    <div class="container">
+      {% if page.image %}
+        <div style="margin-bottom: 2rem;">
+          <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" style="max-width: 100%; border-radius: var(--radius-sm);">
+        </div>
+      {% endif %}
+
+      <div class="prose">
+        {{ content }}
+      </div>
+
+      {% if page.tags %}
+        <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border-color); font-size: 0.85rem; color: var(--text-muted);">
+          Tags: {{ page.tags | join: ", " }}
+        </div>
+      {% endif %}
+
+      <div style="margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+        <a href="{{ '/noticias.html' | relative_url }}" class="link-more">&larr; Voltar para a lista de notícias</a>
+      </div>
+    </div>
+  </section>
+</article>

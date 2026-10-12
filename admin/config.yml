@@ -1,0 +1,138 @@
+# Configuração do Decap CMS v3.x para o Grupo de Pesquisa Letrese
+# Backend GitHub com suporte a GitHub Pages
+backend:
+  name: github
+  repo: Letrese/siteletrese
+  branch: main
+  # URL do Proxy de Autenticação OAuth (Cloudflare Worker ou Netlify Gatekeeper)
+  # Exemplo com Cloudflare Worker: base_url: https://auth-letrese.seu-subdominio.workers.dev
+  # auth_endpoint: /auth
+  # Para testar localmente com "npx decap-server", descomente a linha abaixo:
+  # local_backend: true
+
+# Diretório de uploads de mídia
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+# Localização e idioma
+locale: "pt"
+
+# Publicação direta no branch principal do GitHub
+publish_mode: simple
+
+collections:
+  # 1. Configurações e Descritor do Grupo
+  - name: "settings"
+    label: "Descritor e Dados do Grupo"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "group_data"
+        label: "Descritor Institucional e Identidade"
+        file: "_data/group.yml"
+        fields:
+          - { label: "Sigla / Nome Curto", name: "title", widget: "string" }
+          - { label: "Nome Completo do Grupo", name: "full_name", widget: "string" }
+          - { label: "Descrição Curta", name: "short_description", widget: "text" }
+          - { label: "Apresentação Geral", name: "description", widget: "text" }
+          - { label: "Instituição de Origem", name: "institution", widget: "string" }
+          - { label: "Departamento / Centro", name: "department", widget: "string" }
+          - { label: "Ano de Fundação", name: "founding_year", widget: "string" }
+          - label: "Linhas de Pesquisa"
+            name: "research_lines"
+            widget: "list"
+            fields:
+              - { label: "Identificador", name: "id", widget: "string" }
+              - { label: "Nome da Linha", name: "name", widget: "string" }
+              - { label: "Descrição", name: "description", widget: "text" }
+              - { label: "Coordenador(a) da Linha", name: "coordinator", widget: "string" }
+          - label: "Contatos e Redes"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "E-mail Geral", name: "email", widget: "string" }
+              - { label: "Telefone / Ramal", name: "phone", widget: "string", required: false }
+              - { label: "Endereço Físico", name: "address", widget: "string" }
+              - { label: "Cidade / UF", name: "city_state", widget: "string" }
+              - { label: "Link do Grupo no Diretório CNPq", name: "lattes_group_url", widget: "string", required: false }
+              - { label: "Repositório GitHub", name: "github_repo", widget: "string", required: false }
+
+  # 2. Área de Membros e Currículos
+  - name: "members"
+    label: "Membros e Participantes"
+    label_singular: "Membro"
+    folder: "_members"
+    create: true
+    slug: "{{slug}}"
+    sortable_fields: ["order", "title", "category"]
+    fields:
+      - { label: "Nome Completo com Titulação", name: "title", widget: "string", hint: "Ex: Dra. Helena Silva" }
+      - { label: "Nome Curto / Citação", name: "name", widget: "string", hint: "Ex: Helena Silva" }
+      - { label: "Cargo no Grupo", name: "role", widget: "string", hint: "Ex: Líder do Grupo, Pesquisador Associado, etc." }
+      - label: "Categoria"
+        name: "category"
+        widget: "select"
+        options: ["Coordenação", "Pesquisadores", "Doutorandos", "Mestrandos", "Iniciação Científica", "Colaboradores"]
+      - { label: "Instituição / Departamento", name: "institution", widget: "string" }
+      - { label: "Foto do Membro", name: "photo", widget: "image", required: false, default: "/assets/images/avatars/avatar-1.svg" }
+      - { label: "Link Currículo Lattes", name: "lattes_url", widget: "string", required: false, hint: "http://lattes.cnpq.br/..." }
+      - { label: "ORCID iD", name: "orcid", widget: "string", required: false, hint: "Ex: 0000-0002-1825-0097" }
+      - { label: "E-mail de Contato", name: "email", widget: "string", required: false }
+      - { label: "Ordem de Apresentação", name: "order", widget: "number", default: 10, value_type: "int" }
+      - label: "Áreas de Interesse / Linhas"
+        name: "interests"
+        widget: "list"
+        required: false
+        field: { label: "Tema de Interesse", name: "topic", widget: "string" }
+      - { label: "Currículo e Biografia Resumida (Markdown)", name: "body", widget: "markdown" }
+
+  # 3. Projetos de Pesquisa
+  - name: "projects"
+    label: "Projetos de Pesquisa"
+    label_singular: "Projeto"
+    folder: "_projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título do Projeto", name: "title", widget: "string" }
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["Em andamento", "Concluído", "Planejamento"]
+      - { label: "Ano de Início", name: "start_year", widget: "string" }
+      - { label: "Ano de Término", name: "end_year", widget: "string", required: false }
+      - { label: "Coordenador(a)", name: "coordinator", widget: "string" }
+      - { label: "Financiador / Agência de Fomento", name: "funding", widget: "string", required: false, hint: "Ex: CNPq, CAPES, FAPESP" }
+      - { label: "Linha de Pesquisa Vinculada", name: "research_line", widget: "string", required: false }
+      - label: "Integrantes da Equipe"
+        name: "team"
+        widget: "list"
+        required: false
+        field: { label: "Integrante", name: "name", widget: "string" }
+      - { label: "Resumo Executivo", name: "summary", widget: "text" }
+      - { label: "Descrição Completa, Objetivos e Metodologia", name: "body", widget: "markdown" }
+
+  # 4. Notícias e Comunicados
+  - name: "posts"
+    label: "Notícias e Publicações"
+    label_singular: "Notícia"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Título da Notícia", name: "title", widget: "string" }
+      - { label: "Data e Hora", name: "date", widget: "datetime", format: "YYYY-MM-DD HH:mm:ss" }
+      - { label: "Autor / Redação", name: "author", widget: "string", default: "Coordenação Letrese" }
+      - label: "Categoria"
+        name: "category"
+        widget: "select"
+        options: ["Geral", "Eventos", "Publicações", "Oportunidades", "Extensão"]
+      - label: "Tags / Palavras-chave"
+        name: "tags"
+        widget: "list"
+        required: false
+        field: { label: "Tag", name: "tag", widget: "string" }
+      - { label: "Imagem de Destaque", name: "image", widget: "image", required: false }
+      - { label: "Resumo / Chamada", name: "summary", widget: "text" }
+      - { label: "Texto da Notícia (Markdown)", name: "body", widget: "markdown" }

@@ -1,0 +1,32 @@
+{
+  "name": "siteletrese",
+  "version": "1.0.0",
+  "description": "Portal institucional do Grupo de Pesquisa Letrese (Jekyll + Decap CMS + GitHub Pages)",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build-local.js",
+    "serve": "serve _site -l 3000",
+    "dev": "node build-local.js && serve _site -l 3000",
+    "cms:dev": "npx decap-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Letrese/siteletrese.git"
+  },
+  "keywords": [
+    "letrese",
+    "research-group",
+    "jekyll",
+    "decap-cms",
+    "github-pages",
+    "jamstack"
+  ],
+  "author": "Grupo de Pesquisa Letrese",
+  "license": "CC-BY-4.0",
+  "devDependencies": {
+    "js-yaml": "^4.1.0",
+    "liquidjs": "^10.22.1",
+    "marked": "^15.0.7",
+    "serve": "^14.2.4"
+  }
+}

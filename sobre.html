@@ -1,0 +1,48 @@
+---
+layout: default
+title: "Sobre o Grupo"
+---
+
+<header class="page-header">
+  <div class="container">
+    <h1 class="page-title">Sobre o Letrese</h1>
+    <p class="page-desc">{{ site.data.group.full_name }}</p>
+  </div>
+</header>
+
+<section class="page-content">
+  <div class="container">
+    <div class="prose">
+      <h2>Apresentação</h2>
+      <p>
+        O <strong>Letrese</strong> (Grupo de Pesquisa em Letramentos, Semiótica, Educação e Tecnologias) foi constituído em {{ site.data.group.founding_year }}, vinculado ao {{ site.data.group.department }} da {{ site.data.group.institution }}. O grupo congrega docentes, pesquisadores e estudantes de graduação e pós-graduação.
+      </p>
+      <p>
+        {{ site.data.group.description }}
+      </p>
+
+      <h2>Linhas de Pesquisa</h2>
+      <div class="research-lines-block">
+        {% for line in site.data.group.research_lines %}
+          <div class="research-line-item">
+            <h3>{{ line.name }}</h3>
+            <p>{{ line.description }}</p>
+            <p class="line-coordinator">Coordenação: <strong>{{ line.coordinator }}</strong></p>
+          </div>
+        {% endfor %}
+      </div>
+
+      <h2>Vínculo Institucional e Certificação</h2>
+      <p>
+        O grupo é certificado pela instituição sede junto ao Diretório dos Grupos de Pesquisa no Brasil do Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq).
+      </p>
+      <p>
+        {% if site.data.group.contact.lattes_group_url %}
+          <a href="{{ site.data.group.contact.lattes_group_url }}" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
+            Acessar espelho no Diretório CNPq &rarr;
+          </a>
+        {% endif %}
+      </p>
+    </div>
+  </div>
+</section>

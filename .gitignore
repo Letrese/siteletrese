@@ -1,0 +1,15 @@
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Dependências locais
+node_modules/
+package-lock.json
+
+# Ambiente e Logs
+*.log
+.DS_Store
+Thumbs.db
+.env

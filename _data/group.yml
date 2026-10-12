@@ -1,0 +1,31 @@
+# Informações institucionais do Grupo Letrese
+title: "Letrese"
+full_name: "Grupo de Pesquisa em Letramentos, Semiótica, Educação e Tecnologias"
+short_description: "Grupo de pesquisa dedicado ao estudo dos multiletramentos, processos semióticos e mediações tecnológicas na educação."
+institution: "Universidade Federal"
+department: "Departamento de Linguagens e Educação"
+founding_year: "2020"
+
+description: "O Letrese reúne docentes, pesquisadores e estudantes com o objetivo de desenvolver investigações sobre práticas de linguagem em meios digitais, semiótica aplicada e o uso de tecnologias no ensino e na formação docente."
+
+research_lines:
+  - id: "Linha 1"
+    name: "Multiletramentos e Cultura Digital"
+    description: "Estudo das práticas de leitura, escrita e multimodalidade em ambientes hipermidiáticos e plataformas digitais."
+    coordinator: "Dra. Helena Silva"
+  - id: "Linha 2"
+    name: "Semiótica Aplicada e Práticas Sociodiscursivas"
+    description: "Análise dos processos de significação, linguagens audiovisuais e narrativas contemporâneas."
+    coordinator: "Dr. Carlos Eduardo Moraes"
+  - id: "Linha 3"
+    name: "Tecnologias na Educação e Formação Docente"
+    description: "Pesquisa sobre a integração de tecnologias digitais, recursos educacionais e práticas pedagógicas."
+    coordinator: "Dra. Helena Silva"
+
+contact:
+  email: "contato@letrese.uf.br"
+  phone: "+55 (11) 3000-0000"
+  address: "Pavilhão de Humanidades, Sala 304"
+  city_state: "São Paulo - SP, Brasil"
+  lattes_group_url: "http://dgp.cnpq.br/dgp/espelhogrupo/0000000000000000"
+  github_repo: "https://github.com/Letrese/siteletrese"

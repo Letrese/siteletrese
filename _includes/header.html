@@ -1,0 +1,27 @@
+<header class="site-header">
+  <div class="container">
+    <nav class="navbar" aria-label="Navegação Principal">
+      <a href="{{ '/' | relative_url }}" class="site-logo">
+        <span class="logo-title">{{ site.data.group.title }}</span>
+        <span class="logo-subtitle">Grupo de Pesquisa</span>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="{{ '/' | relative_url }}" class="nav-link {% if page.url == '/' %}active{% endif %}">Início</a></li>
+        <li><a href="{{ '/sobre.html' | relative_url }}" class="nav-link {% if page.url contains 'sobre' %}active{% endif %}">Sobre</a></li>
+        <li><a href="{{ '/membros.html' | relative_url }}" class="nav-link {% if page.url contains 'membros' %}active{% endif %}">Membros</a></li>
+        <li><a href="{{ '/projetos.html' | relative_url }}" class="nav-link {% if page.url contains 'projetos' %}active{% endif %}">Projetos</a></li>
+        <li><a href="{{ '/noticias.html' | relative_url }}" class="nav-link {% if page.url contains 'noticias' %}active{% endif %}">Notícias</a></li>
+        <li><a href="{{ '/contato.html' | relative_url }}" class="nav-link {% if page.url contains 'contato' %}active{% endif %}">Contato</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

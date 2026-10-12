@@ -1,0 +1,50 @@
+# Workflow de Build e Deploy Contínuo no GitHub Pages para o Jekyll
+name: Deploy Jekyll site to Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+# Permissões necessárias para publicar no GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Permite apenas um deploy simultâneo
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Job de compilação
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do Repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Compilar Jekyll com GitHub Pages Engine
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+
+      - name: Upload dos Artefatos Estáticos
+        uses: actions/upload-pages-artifact@v3
+
+  # Job de deploy
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Publicar no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

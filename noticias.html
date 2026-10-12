@@ -1,0 +1,25 @@
+---
+layout: default
+title: "Notícias"
+---
+
+<header class="page-header">
+  <div class="container">
+    <h1 class="page-title">Notícias e Comunicados</h1>
+    <p class="page-desc">Informes, publicações e eventos acadêmicos do grupo.</p>
+  </div>
+</header>
+
+<section class="page-content">
+  <div class="container">
+    <div class="posts-list">
+      {% for post in site.posts %}
+        {% include post_card.html %}
+      {% endfor %}
+    </div>
+
+    {% if site.posts.size == 0 %}
+      <p style="color: var(--text-muted); text-align: center; padding: 2rem;">Nenhuma notícia publicada.</p>
+    {% endif %}
+  </div>
+</section>

@@ -1,0 +1,30 @@
+<div class="member-card" data-category="{{ member.category }}">
+  <div class="member-header">
+    <img src="{{ member.photo | relative_url }}" alt="{{ member.title }}" class="member-photo" width="56" height="56" loading="lazy">
+    <div>
+      <h3 class="member-name">
+        <a href="{{ member.url | relative_url }}">{{ member.title }}</a>
+      </h3>
+      <span class="member-role">{{ member.role }}</span>
+      <span class="member-tag">{{ member.category }}</span>
+    </div>
+  </div>
+
+  {% if member.interests %}
+    <div class="member-interests">
+      {% for topic in member.interests %}
+        <span class="interest-item">{{ topic }}</span>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <div class="member-links">
+    {% if member.lattes_url %}
+      <a href="{{ member.lattes_url }}" target="_blank" rel="noopener" class="link-academic">Currículo Lattes</a>
+    {% endif %}
+    {% if member.orcid %}
+      <a href="https://orcid.org/{{ member.orcid }}" target="_blank" rel="noopener" class="link-academic">ORCID</a>
+    {% endif %}
+    <a href="{{ member.url | relative_url }}" class="link-more" style="margin-left: auto;">Perfil &rarr;</a>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-info">
+        <strong>{{ site.data.group.title }} — {{ site.data.group.full_name }}</strong>
+        <p>{{ site.data.group.institution }} • {{ site.data.group.department }}</p>
+        <p>{{ site.data.group.contact.address }} — {{ site.data.group.contact.city_state }}</p>
+      </div>
+
+      <div class="footer-nav">
+        <ul class="footer-links">
+          <li><a href="{{ '/' | relative_url }}">Início</a></li>
+          <li><a href="{{ '/sobre.html' | relative_url }}">Sobre</a></li>
+          <li><a href="{{ '/membros.html' | relative_url }}">Membros</a></li>
+          <li><a href="{{ '/projetos.html' | relative_url }}">Projetos</a></li>
+          <li><a href="{{ '/noticias.html' | relative_url }}">Notícias</a></li>
+          <li><a href="{{ '/contato.html' | relative_url }}">Contato</a></li>
+          {% if site.data.group.contact.lattes_group_url %}
+            <li><a href="{{ site.data.group.contact.lattes_group_url }}" target="_blank" rel="noopener">Diretório CNPq</a></li>
+          {% endif %}
+          <li><a href="{{ '/admin/' | relative_url }}">Painel CMS</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {{ 'now' | date: "%Y" }} {{ site.data.group.title }}. Conteúdo sob licença aberta.</p>
+    </div>
+  </div>
+</footer>
