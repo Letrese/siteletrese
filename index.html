@@ -3,6 +3,31 @@ layout: default
 title: "Início"
 ---
 
+<!-- Banner interativo: mapa vivo dos conteúdos do site (gerado a partir dos dados no build) -->
+<section class="data-banner" id="data-banner" aria-label="Mapa interativo das linhas de pesquisa e conteúdos do grupo">
+  <canvas id="banner-canvas" aria-hidden="true"></canvas>
+  <div class="banner-overlay">
+    <span class="banner-kicker">Mapa vivo do Letrese</span>
+    <p class="banner-hint">Cada núcleo é uma linha de pesquisa. Passe o mouse sobre os pontos e clique para abrir.</p>
+  </div>
+  <ul class="banner-stats" id="banner-stats"></ul>
+  <ul class="banner-legend" id="banner-legend"></ul>
+  <div class="banner-tooltip" id="banner-tooltip" role="tooltip" hidden></div>
+</section>
+
+<script id="banner-data" type="application/json">
+{
+  "lines": [{% for l in site.data.group.research_lines %}{"name": {{ l.name | jsonify }}, "coordinator": {{ l.coordinator | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}],
+  "items": [
+    {% for m in site.members %}{"type": "member", "title": {{ m.title | jsonify }}, "name": {{ m.name | jsonify }}, "url": {{ m.url | relative_url | jsonify }}, "tags": {{ m.interests | jsonify }}, "chars": {{ m.content | strip_html | size }}},
+    {% endfor %}{% for p in site.projects %}{"type": "project", "title": {{ p.title | jsonify }}, "url": {{ p.url | relative_url | jsonify }}, "line": {{ p.research_line | jsonify }}, "team": {{ p.team | jsonify }}, "summary": {{ p.summary | jsonify }}, "year": {{ p.start_year | jsonify }}, "active": {% if p.status == "Em andamento" %}true{% else %}false{% endif %}, "chars": {{ p.content | strip_html | size }}},
+    {% endfor %}{% for post in site.posts %}{"type": "post", "title": {{ post.title | jsonify }}, "url": {{ post.url | relative_url | jsonify }}, "tags": {{ post.tags | jsonify }}, "summary": {{ post.summary | jsonify }}, "date": {{ post.date | date: "%Y-%m-%d" | jsonify }}, "chars": {{ post.content | strip_html | size }}},
+    {% endfor %}null
+  ]
+}
+</script>
+<script src="{{ '/assets/js/banner.js' | relative_url }}" defer></script>
+
 <!-- Apresentação Institucional do Grupo -->
 <section class="section-intro">
   <div class="container">

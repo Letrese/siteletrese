@@ -56,6 +56,8 @@ engine.registerFilter('truncate', (input, len = 100) => {
   return input.length > len ? input.slice(0, len) + '...' : input;
 });
 
+engine.registerFilter('jsonify', input => JSON.stringify(input === undefined ? null : input));
+
 engine.registerFilter('markdownify', input => {
   return marked.parse(input || '');
 });
@@ -88,6 +90,7 @@ function loadCollection(folderName, urlPrefix, defaultLayout) {
       slug,
       url,
       body,
+      content: marked.parse(body),
       contentHtml: marked.parse(body),
       layout: data.layout || defaultLayout
     };
@@ -117,6 +120,7 @@ function loadPosts() {
       url,
       date: postDate,
       body,
+      content: marked.parse(body),
       contentHtml: marked.parse(body),
       layout: data.layout || 'post'
     };

@@ -780,8 +780,133 @@ p {
   color: var(--color-text-muted);
 }
 
+/* Banner interativo (Mapa vivo) */
+.data-banner {
+  position: relative;
+  height: 440px;
+  overflow: hidden;
+  color: #ffffff;
+  background: #0b1026;
+  touch-action: pan-y;
+}
+
+.data-banner canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.5rem;
+  max-width: 420px;
+  pointer-events: none;
+}
+
+.banner-kicker {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.banner-hint {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0.25rem 0 0;
+}
+
+.banner-stats,
+.banner-legend {
+  position: absolute;
+  bottom: 1rem;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+}
+
+.banner-stats {
+  left: 1.5rem;
+  max-width: 55%;
+}
+
+.banner-stats li,
+.banner-legend li {
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-full);
+  padding: 0.25rem 0.7rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.banner-stats strong {
+  color: #ffffff;
+}
+
+.banner-legend {
+  right: 1.5rem;
+  justify-content: flex-end;
+  max-width: 45%;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 0.4rem;
+  vertical-align: middle;
+}
+
+.legend-shapes span + span {
+  margin-left: 0.6rem;
+}
+
+.banner-tooltip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 280px;
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  pointer-events: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.banner-tooltip strong {
+  display: block;
+  color: #ffffff;
+}
+
+.banner-tooltip span {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.75rem;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
+  .data-banner {
+    height: 380px;
+  }
+
+  .banner-legend {
+    display: none;
+  }
+
+  .banner-stats {
+    max-width: calc(100% - 3rem);
+  }
   .nav-menu {
     display: none;
     position: absolute;
