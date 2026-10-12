@@ -176,6 +176,15 @@ async function buildRootPages() {
     const fullHtml = await renderWithLayout(renderedBody, data.layout || 'default', data);
 
     fs.writeFileSync(path.join(SITE_DIR, pageName), fullHtml, 'utf8');
+
+    // Suporte a URLs amigáveis (/sobre/ -> /sobre/index.html)
+    if (pageName !== 'index.html' && pageName !== '404.html' && pageName.endsWith('.html')) {
+      const folderName = pageName.replace(/\.html$/, '');
+      const outDir = path.join(SITE_DIR, folderName);
+      fs.mkdirSync(outDir, { recursive: true });
+      fs.writeFileSync(path.join(outDir, 'index.html'), fullHtml, 'utf8');
+    }
+
     console.log(`[Build] Página gerada: ${pageName}`);
   }
 }
