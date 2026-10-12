@@ -48,10 +48,13 @@
   }
 
   const projects = items.filter(i => i.type === 'project');
+  // 1ª passada: projetos (os membros dependem deles)
+  projects.forEach(it => {
+    it.line = lines.find(l => norm(l.name) === norm(it.line)) || scoreLine(it.title + ' ' + it.summary);
+  });
+  // 2ª passada: membros e notícias
   items.forEach(it => {
-    if (it.type === 'project') {
-      it.line = lines.find(l => norm(l.name) === norm(it.line)) || scoreLine(it.title + ' ' + it.summary);
-    } else if (it.type === 'member') {
+    if (it.type === 'member') {
       const votes = new Map();
       lines.forEach(l => { if (norm(l.coordinator) && norm(l.coordinator) === norm(it.title)) votes.set(l, 3); });
       projects.forEach(p => {
@@ -60,7 +63,7 @@
       let best = null, max = 0;
       votes.forEach((v, l) => { if (v > max) { max = v; best = l; } });
       it.line = best || scoreLine(it.tags.join(' '));
-    } else {
+    } else if (it.type === 'post') {
       it.line = scoreLine(it.title + ' ' + it.tags.join(' ') + ' ' + it.summary);
     }
     if (it.line) it.line.count++;
