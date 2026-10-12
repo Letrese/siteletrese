@@ -1,5 +1,8 @@
 # Guia de Administração e Configuração de Autenticação OAuth (Decap CMS)
 
+> **TL;DR:**  
+> O login do Decap CMS no GitHub Pages utiliza o Cloudflare Worker `https://letrese-oauth.gakimuro.workers.dev` para trocar o código de autorização pelo token com segurança. O código do Worker fica em `auth-proxy/worker.js` e as chaves ficam salvas no painel da Cloudflare.
+
 Este documento fornece as instruções passo a passo para gerenciar o conteúdo do portal do grupo de pesquisa **Letrese** através do **Decap CMS v3.x**, bem como a configuração do proxy de autenticação GitHub OAuth no **GitHub Pages**.
 
 ---
@@ -78,7 +81,7 @@ backend:
   name: github
   repo: Letrese/siteletrese
   branch: main
-  base_url: https://letrese-oauth-proxy.seu-subdominio.workers.dev
+  base_url: https://letrese-oauth.gakimuro.workers.dev
   auth_endpoint: auth
 ```
 

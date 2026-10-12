@@ -70,7 +70,11 @@ siteletrese/
 │   ├── worker.js             # Código do Cloudflare Worker para o proxy OAuth
 │   └── wrangler.toml         # Configuração de deploy do Cloudflare Worker
 ├── docs/
-│   └── GUIA_ADMIN_E_OAUTH.md # Manual passo a passo do CMS e do Proxy OAuth
+│   ├── README.md             # Índice geral da documentação com TL;DR
+│   ├── MANUAL_DE_CADASTRO.md # Manual passo a passo para cadastrar Membros, Projetos e Notícias
+│   ├── MANUTENCAO_E_DEPLOY.md# Guia de arquitetura, deploy e como rodar localmente
+│   ├── RESOLUCAO_DE_PROBLEMAS.md # Soluções rápidas (cache, 404, permissões)
+│   └── GUIA_ADMIN_E_OAUTH.md # Configuração detalhada do OAuth e Cloudflare Worker
 ├── index.html                # Página inicial com destaques e descritor
 ├── sobre.html                # Descritor institucional completo e linhas
 ├── membros.html              # Catálogo com filtros de membros e currículos
