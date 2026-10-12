@@ -20,10 +20,10 @@
 
   <div class="member-links">
     {% if member.lattes_url %}
-      <a href="{{ member.lattes_url }}" target="_blank" rel="noopener" class="link-academic">Currículo Lattes</a>
+      <a href="{{ member.lattes_url }}" target="_blank" rel="noopener noreferrer" class="link-academic">Currículo Lattes</a>
     {% endif %}
     {% if member.orcid %}
-      <a href="https://orcid.org/{{ member.orcid }}" target="_blank" rel="noopener" class="link-academic">ORCID</a>
+      <a href="https://orcid.org/{{ member.orcid }}" target="_blank" rel="noopener noreferrer" class="link-academic">ORCID</a>
     {% endif %}
     <a href="{{ member.url | relative_url }}" class="link-more" style="margin-left: auto;">Perfil &rarr;</a>
   </div>

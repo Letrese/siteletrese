@@ -16,10 +16,10 @@ layout: default
 
         <div class="member-links" style="margin-top: 0.75rem;">
           {% if page.lattes_url %}
-            <a href="{{ page.lattes_url }}" target="_blank" rel="noopener" class="link-academic">Currículo Lattes (CNPq)</a>
+            <a href="{{ page.lattes_url }}" target="_blank" rel="noopener noreferrer" class="link-academic">Currículo Lattes (CNPq)</a>
           {% endif %}
           {% if page.orcid %}
-            <a href="https://orcid.org/{{ page.orcid }}" target="_blank" rel="noopener" class="link-academic">ORCID</a>
+            <a href="https://orcid.org/{{ page.orcid }}" target="_blank" rel="noopener noreferrer" class="link-academic">ORCID</a>
           {% endif %}
           {% if page.email %}
             <a href="mailto:{{ page.email }}" class="link-academic">{{ page.email }}</a>

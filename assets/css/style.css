@@ -74,6 +74,32 @@ a:hover {
   color: var(--color-primary-hover);
 }
 
+/* Acessibilidade: Skip link e Focus visible */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1.5rem;
+  background-color: var(--color-primary);
+  color: #ffffff !important;
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9rem;
+  z-index: 10000;
+  text-decoration: none !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
 p {
   margin-bottom: 1rem;
 }
@@ -392,12 +418,15 @@ p {
 }
 
 .search-box {
-  min-width: 220px;
+  min-width: 240px;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .search-input {
   width: 100%;
-  padding: 0.4rem 0.75rem;
+  padding: 0.4rem 2rem 0.4rem 0.75rem;
   font-size: 0.85rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
@@ -407,6 +436,27 @@ p {
 
 .search-input:focus {
   border-color: var(--color-primary);
+}
+
+.search-clear {
+  position: absolute;
+  right: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 4px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+}
+
+.search-clear:hover {
+  color: var(--color-primary);
+  background-color: var(--color-bg-subtle);
 }
 
 /* Membros (Cards / Lista) */
@@ -423,6 +473,13 @@ p {
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.member-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-border-hover);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .member-header {

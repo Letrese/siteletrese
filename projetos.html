@@ -14,14 +14,15 @@ permalink: /projetos/
 <section class="page-content">
   <div class="container">
     <div class="filter-bar">
-      <div class="filter-group">
-        <button class="filter-btn active" data-project-filter="all">Todos</button>
-        <button class="filter-btn" data-project-filter="Em andamento">Em andamento</button>
-        <button class="filter-btn" data-project-filter="Concluído">Concluídos</button>
+      <div class="filter-group" role="group" aria-label="Filtrar projetos por status">
+        <button class="filter-btn active" data-project-filter="all" aria-pressed="true">Todos</button>
+        <button class="filter-btn" data-project-filter="Em andamento" aria-pressed="false">Em andamento</button>
+        <button class="filter-btn" data-project-filter="Concluído" aria-pressed="false">Concluídos</button>
       </div>
 
       <div class="search-box">
         <input type="text" id="project-search" class="search-input" placeholder="Buscar projeto..." aria-label="Buscar projeto">
+        <button type="button" id="project-search-clear" class="search-clear" aria-label="Limpar busca" title="Limpar busca">&times;</button>
       </div>
     </div>
 

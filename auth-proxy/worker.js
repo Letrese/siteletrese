@@ -62,6 +62,18 @@ export default {
               <script>
                 (function() {
                   function receiveMessage(e) {
+                    const allowedOrigins = [
+                      'https://letrese.github.io',
+                      'http://localhost',
+                      'http://127.0.0.1'
+                    ];
+                    const isAllowed = allowedOrigins.some(function(origin) {
+                      return e.origin && (e.origin === origin || e.origin.startsWith(origin + ':'));
+                    });
+                    if (!isAllowed) {
+                      console.warn('Origem rejeitada por segurança:', e.origin);
+                      return;
+                    }
                     window.opener.postMessage(
                       'authorization:github:success:${JSON.stringify(content)}',
                       e.origin

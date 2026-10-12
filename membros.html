@@ -14,15 +14,16 @@ permalink: /membros/
 <section class="page-content">
   <div class="container">
     <div class="filter-bar">
-      <div class="filter-group">
-        <button class="filter-btn active" data-member-filter="all">Todos</button>
-        <button class="filter-btn" data-member-filter="Coordenação">Coordenação</button>
-        <button class="filter-btn" data-member-filter="Pesquisadores">Pesquisadores</button>
-        <button class="filter-btn" data-member-filter="Iniciação Científica">Iniciação Científica</button>
+      <div class="filter-group" role="group" aria-label="Filtrar membros por categoria">
+        <button class="filter-btn active" data-member-filter="all" aria-pressed="true">Todos</button>
+        <button class="filter-btn" data-member-filter="Coordenação" aria-pressed="false">Coordenação</button>
+        <button class="filter-btn" data-member-filter="Pesquisadores" aria-pressed="false">Pesquisadores</button>
+        <button class="filter-btn" data-member-filter="Iniciação Científica" aria-pressed="false">Iniciação Científica</button>
       </div>
 
       <div class="search-box">
         <input type="text" id="member-search" class="search-input" placeholder="Buscar por nome ou área..." aria-label="Buscar membro">
+        <button type="button" id="search-clear" class="search-clear" aria-label="Limpar busca" title="Limpar busca">&times;</button>
       </div>
     </div>
 
