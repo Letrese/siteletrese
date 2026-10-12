@@ -4,11 +4,8 @@ backend:
   name: github
   repo: Letrese/siteletrese
   branch: main
-  # URL do Proxy de Autenticação OAuth (Cloudflare Worker ou Netlify Gatekeeper)
-  # Exemplo com Cloudflare Worker: base_url: https://auth-letrese.seu-subdominio.workers.dev
-  # auth_endpoint: /auth
-  # Para testar localmente com "npx decap-server", descomente a linha abaixo:
-  # local_backend: true
+  base_url: https://letrese-oauth.gakimuro.workers.dev
+  auth_endpoint: auth
 
 # Diretório de uploads de mídia
 media_folder: "assets/images/uploads"
