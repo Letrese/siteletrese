@@ -179,8 +179,9 @@
     if (p.y > H - p.r) { p.y = H - p.r; p.vy = -Math.abs(p.vy); }
   }
 
-  // ---------- Física ----------
-  const mouse = { x: -9999, y: -9999, active: false };
+  // ---------- Física e Efeito de Iluminação ----------
+  const mouse = { x: -9999, y: -9999, active: false, intensity: 0 };
+  const glowTrail = [];
   const drag = { node: null, startX: 0, startY: 0, moved: false, lastX: 0, lastY: 0, vx: 0, vy: 0 };
   function step(dt) {
     const orbitBase = Math.min(W, H) * 0.12;
@@ -231,6 +232,14 @@
       it.x += it.vx * dt; it.y += it.vy * dt;
       clamp(it);
     });
+
+    // Decaimento do rastro suave de iluminação
+    for (let i = glowTrail.length - 1; i >= 0; i--) {
+      glowTrail[i].life -= 0.028 * dt;
+      if (glowTrail[i].life <= 0) {
+        glowTrail.splice(i, 1);
+      }
+    }
   }
 
   // Nó arrastado segue o ponteiro; guarda a velocidade para o "arremesso"
@@ -264,13 +273,30 @@
     g.addColorStop(0, sky[0]); g.addColorStop(1, sky[1]);
     ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
 
-    // Efeito de degradê que acompanha o mouse e clareia o banner
-    if (mouse.active && mouse.x >= -120 && mouse.x <= W + 120 && mouse.y >= -120 && mouse.y <= H + 120) {
-      const glowR = Math.max(180, Math.min(W, H) * 0.42);
+    // Decaimento suave do rastro e fade in/out da intensidade do mouse
+    const targetIntensity = (mouse.active && mouse.x >= -120 && mouse.x <= W + 120 && mouse.y >= -120 && mouse.y <= H + 120) ? 1 : 0;
+    mouse.intensity += (targetIntensity - mouse.intensity) * (targetIntensity > mouse.intensity ? 0.08 : 0.04);
+
+    // 1. Caminho suave de degradê (rastro que some com o tempo)
+    glowTrail.forEach(p => {
+      if (p.life <= 0.01) return;
+      const trailR = Math.max(220, Math.min(W, H) * 0.52);
+      const trailGlow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, trailR);
+      trailGlow.addColorStop(0, `rgba(255, 255, 255, ${0.18 * p.life})`);
+      trailGlow.addColorStop(0.35, `rgba(55, 191, 165, ${0.12 * p.life})`);
+      trailGlow.addColorStop(0.7, `rgba(55, 191, 165, ${0.03 * p.life})`);
+      trailGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      ctx.fillStyle = trailGlow;
+      ctx.fillRect(0, 0, W, H);
+    });
+
+    // 2. Foco principal sobre o cursor (raio ampliado com fade in e fade out)
+    if (mouse.intensity > 0.01) {
+      const glowR = Math.max(300, Math.min(W, H) * 0.70);
       const glow = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, glowR);
-      glow.addColorStop(0, 'rgba(255, 255, 255, 0.22)');
-      glow.addColorStop(0.35, 'rgba(55, 191, 165, 0.14)');
-      glow.addColorStop(0.7, 'rgba(55, 191, 165, 0.04)');
+      glow.addColorStop(0, `rgba(255, 255, 255, ${0.24 * mouse.intensity})`);
+      glow.addColorStop(0.35, `rgba(55, 191, 165, ${0.16 * mouse.intensity})`);
+      glow.addColorStop(0.7, `rgba(55, 191, 165, ${0.04 * mouse.intensity})`);
       glow.addColorStop(1, 'rgba(0, 0, 0, 0)');
       ctx.fillStyle = glow;
       ctx.fillRect(0, 0, W, H);
@@ -356,6 +382,14 @@
 
   function onMove(e) {
     setPointer(e);
+
+    // Registra ponto para o rastro suave de degradê
+    const lastP = glowTrail[glowTrail.length - 1];
+    if (!lastP || Math.hypot(mouse.x - lastP.x, mouse.y - lastP.y) > 9) {
+      glowTrail.push({ x: mouse.x, y: mouse.y, life: 1.0 });
+      if (glowTrail.length > 32) glowTrail.shift();
+    }
+
     if (drag.node) {
       if (!drag.moved && Math.hypot(mouse.x - drag.startX, mouse.y - drag.startY) > 4) drag.moved = true;
       drag.vx = drag.vx * 0.5 + (mouse.x - drag.lastX) * 0.5;

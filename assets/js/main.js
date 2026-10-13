@@ -161,31 +161,114 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. Efeito de degradê suave acompanhando o ponteiro do mouse pelo corpo do site
-  if (window.matchMedia('(pointer: fine)').matches) {
-    let cursorTicking = false;
-    let targetX = -9999;
-    let targetY = -9999;
+  // 3. Efeito de degradê suave com rastro amplo, fade in e fade out acompanhando o mouse pelo corpo
+  if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const trailCanvas = document.createElement('canvas');
+    trailCanvas.id = 'cursor-trail-canvas';
+    document.body.appendChild(trailCanvas);
+    const ctx = trailCanvas.getContext('2d');
+
+    let width = 0, height = 0;
+    function resizeCanvas() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      trailCanvas.width = width * dpr;
+      trailCanvas.height = height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas, { passive: true });
+
+    const trail = [];
+    const mouse = { x: -9999, y: -9999, active: false, intensity: 0 };
+    let animId = null;
+    let stopTimeout = null;
+
+    function renderTrail() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Fade in suave ao mover e fade out suave ao parar/sair
+      const targetIntensity = mouse.active ? 1 : 0;
+      mouse.intensity += (targetIntensity - mouse.intensity) * (targetIntensity > mouse.intensity ? 0.08 : 0.035);
+
+      // Decaimento e desenho dos pontos do rastro (caminho suave)
+      for (let i = trail.length - 1; i >= 0; i--) {
+        const p = trail[i];
+        p.life -= 0.022; // dura cerca de 1 a 1.2 segundos
+        if (p.life <= 0.01) {
+          trail.splice(i, 1);
+          continue;
+        }
+
+        const r = p.radius;
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r);
+        g.addColorStop(0, `rgba(55, 191, 165, ${0.038 * p.life})`);
+        g.addColorStop(0.4, `rgba(55, 191, 165, ${0.015 * p.life})`);
+        g.addColorStop(0.75, `rgba(55, 191, 165, ${0.004 * p.life})`);
+        g.addColorStop(1, 'rgba(55, 191, 165, 0)');
+
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Foco principal do mouse (raio ampliado com fade in e fade out)
+      if (mouse.intensity > 0.01 && mouse.x >= 0 && mouse.y >= 0) {
+        const mainR = Math.max(340, Math.min(width, height) * 0.48);
+        const g = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, mainR);
+        g.addColorStop(0, `rgba(55, 191, 165, ${0.045 * mouse.intensity})`);
+        g.addColorStop(0.4, `rgba(55, 191, 165, ${0.018 * mouse.intensity})`);
+        g.addColorStop(0.75, `rgba(55, 191, 165, ${0.005 * mouse.intensity})`);
+        g.addColorStop(1, 'rgba(55, 191, 165, 0)');
+
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(mouse.x, mouse.y, mainR, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Se ainda houver pontos vivos ou intensidade ativa, continua o loop; senão pausa para economizar recursos
+      if (trail.length > 0 || mouse.intensity > 0.01) {
+        animId = requestAnimationFrame(renderTrail);
+      } else {
+        animId = null;
+      }
+    }
+
+    function startLoop() {
+      if (!animId) {
+        animId = requestAnimationFrame(renderTrail);
+      }
+    }
 
     document.addEventListener('pointermove', (e) => {
-      targetX = e.clientX;
-      targetY = e.clientY;
-      if (!document.body.classList.contains('has-cursor')) {
-        document.body.classList.add('has-cursor');
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+      mouse.active = true;
+
+      // Adiciona ponto ao rastro se o ponteiro tiver percorrido uma distância mínima
+      const last = trail[trail.length - 1];
+      if (!last || Math.hypot(mouse.x - last.x, mouse.y - last.y) > 12) {
+        const radius = Math.max(300, Math.min(width, height) * 0.42);
+        trail.push({ x: mouse.x, y: mouse.y, life: 1.0, radius });
+        if (trail.length > 26) trail.shift();
       }
 
-      if (!cursorTicking) {
-        window.requestAnimationFrame(() => {
-          document.documentElement.style.setProperty('--cursor-x', `${targetX}px`);
-          document.documentElement.style.setProperty('--cursor-y', `${targetY}px`);
-          cursorTicking = false;
-        });
-        cursorTicking = true;
-      }
-    });
+      startLoop();
+
+      // Temporizador para fade out suave se o mouse ficar parado
+      clearTimeout(stopTimeout);
+      stopTimeout = setTimeout(() => {
+        mouse.active = false;
+        startLoop();
+      }, 1000);
+    }, { passive: true });
 
     document.addEventListener('pointerleave', () => {
-      document.body.classList.remove('has-cursor');
+      mouse.active = false;
+      startLoop();
     });
   }
 });
