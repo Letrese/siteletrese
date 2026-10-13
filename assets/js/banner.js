@@ -21,7 +21,8 @@
   const tooltip = document.getElementById('banner-tooltip');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const PALETTE = ['#37BFA5', '#5eead4', '#2dd4bf', '#34d399', '#a7f3d0', '#14b8a6'];
+  // Três cores distintas para as três linhas de pesquisa
+  const PALETTE = ['#37BFA5', '#fbbf24', '#38bdf8'];
   const FREE_COLOR = '#e2ece8';
   const TYPE_LABEL = { member: 'Membro', project: 'Projeto', post: 'Notícia' };
 
