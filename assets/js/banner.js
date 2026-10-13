@@ -165,37 +165,64 @@
     lines.forEach(l => { l.r = l.baseR * scale; });
 
     if (first) placeInitial();
+    else if (!userInteracted) updateHomes();
     lines.forEach(clamp); items.forEach(clamp);
+  }
+
+  let userInteracted = false;
+
+  function getContainerBounds() {
+    // Área útil limite do site (container central: 1060px máx)
+    const containerMax = 1060;
+    const pad = W < 640 ? 20 : 36;
+    const cW = Math.min(W - pad * 2, containerMax);
+    const left = (W - cW) / 2;
+    const right = left + cW;
+    return { left, right, width: cW };
+  }
+
+  function updateHomes() {
+    const isMobile = W < 640;
+    const cb = getContainerBounds();
+    if (isMobile) {
+      const positions = [
+        { x: cb.left + cb.width * 0.32, y: H * 0.32 },
+        { x: cb.left + cb.width * 0.68, y: H * 0.52 },
+        { x: cb.left + cb.width * 0.36, y: H * 0.72 }
+      ];
+      lines.forEach((l, i) => {
+        const pos = positions[i] || { x: cb.left + cb.width * 0.5, y: H * 0.5 };
+        l.homeX = pos.x; l.homeY = pos.y;
+      });
+    } else {
+      const n = lines.length || 1;
+      const innerMargin = Math.min(100, cb.width * 0.13);
+      const usableLeft = cb.left + innerMargin;
+      const usableRight = cb.right - innerMargin;
+      const usableW = usableRight - usableLeft;
+      lines.forEach((l, i) => {
+        l.homeX = usableLeft + usableW * (i + 0.5) / n;
+        l.homeY = H * (0.47 + (i % 2 ? 0.10 : -0.07));
+      });
+    }
   }
 
   function placeInitial() {
     const isMobile = W < 640;
-    if (isMobile) {
-      // No mobile: distribuição triangular/vertical balanceada para aproveitar o formato da tela
-      const positions = [
-        { x: W * 0.34, y: H * 0.32 },
-        { x: W * 0.68, y: H * 0.52 },
-        { x: W * 0.36, y: H * 0.72 }
-      ];
-      lines.forEach((l, i) => {
-        const pos = positions[i] || { x: W * 0.5, y: H * 0.5 };
-        l.x = pos.x + (Math.random() - 0.5) * 20;
-        l.y = pos.y + (Math.random() - 0.5) * 20;
-        l.vx = (Math.random() - 0.5) * 0.2; l.vy = (Math.random() - 0.5) * 0.2;
-      });
-    } else {
-      const n = lines.length || 1;
-      lines.forEach((l, i) => {
-        l.x = W * (i + 0.5) / n + (Math.random() - 0.5) * 40;
-        l.y = H * (0.45 + (i % 2 ? 0.12 : -0.08));
-        l.vx = (Math.random() - 0.5) * 0.3; l.vy = (Math.random() - 0.5) * 0.3;
-      });
-    }
+    const cb = getContainerBounds();
+    updateHomes();
+
+    lines.forEach((l, i) => {
+      l.x = l.homeX + (Math.random() - 0.5) * (isMobile ? 16 : 24);
+      l.y = l.homeY + (Math.random() - 0.5) * (isMobile ? 16 : 20);
+      l.vx = (Math.random() - 0.5) * 0.2; l.vy = (Math.random() - 0.5) * 0.2;
+    });
 
     items.forEach(it => {
-      const c = it.line || { x: W / 2, y: H / 2 };
-      it.x = c.x + (Math.random() - 0.5) * (isMobile ? 36 : 60);
-      it.y = c.y + (Math.random() - 0.5) * (isMobile ? 36 : 60);
+      const c = it.line || { x: cb.left + cb.width / 2, y: H / 2 };
+      const spread = isMobile ? 30 : 45;
+      it.x = c.x + (Math.random() - 0.5) * spread;
+      it.y = c.y + (Math.random() - 0.5) * spread;
     });
   }
 
@@ -218,6 +245,13 @@
     lines.forEach((l, i) => {
       l.vx += (Math.random() - 0.5) * 0.02 * dt;
       l.vy += (Math.random() - 0.5) * 0.02 * dt;
+
+      // No carregamento inicial, mantém os núcleos suavemente ancorados na área útil do site
+      if (!userInteracted && l.homeX !== undefined) {
+        l.vx += (l.homeX - l.x) * 0.0008 * dt;
+        l.vy += (l.homeY - l.y) * 0.0008 * dt;
+      }
+
       lines.forEach((o, j) => {
         if (i === j) return;
         const dx = l.x - o.x, dy = l.y - o.y, d2 = dx * dx + dy * dy + 1, d = Math.sqrt(d2);
@@ -428,6 +462,7 @@
     if (drag.node) {
       if (!drag.moved && Math.hypot(mouse.x - drag.startX, mouse.y - drag.startY) > 6) {
         drag.moved = true;
+        userInteracted = true;
         if (banner.setPointerCapture && !banner.hasPointerCapture(e.pointerId)) {
           try { banner.setPointerCapture(e.pointerId); } catch (_) {}
         }
@@ -450,6 +485,7 @@
   banner.addEventListener('pointermove', onMove);
   banner.addEventListener('pointerdown', e => {
     if (e.target.closest('a, .banner-legend, .banner-stats')) return;
+    userInteracted = true;
     setPointer(e);
     const isTouch = e.pointerType === 'touch';
     const hitRadius = isTouch ? 30 : 18;
