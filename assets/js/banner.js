@@ -277,44 +277,44 @@
     const targetIntensity = (mouse.active && mouse.x >= -120 && mouse.x <= W + 120 && mouse.y >= -120 && mouse.y <= H + 120) ? 1 : 0;
     mouse.intensity += (targetIntensity - mouse.intensity) * (targetIntensity > mouse.intensity ? 0.08 : 0.04);
 
-    // 1. Caminho suave de degradê (rastro que some com o tempo)
+    // 1. Caminho suave de degradê no fundo (rastro sutil que some com o tempo)
     glowTrail.forEach(p => {
       if (p.life <= 0.01) return;
       const trailR = Math.max(220, Math.min(W, H) * 0.52);
       const trailGlow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, trailR);
-      trailGlow.addColorStop(0, `rgba(255, 255, 255, ${0.18 * p.life})`);
-      trailGlow.addColorStop(0.35, `rgba(55, 191, 165, ${0.12 * p.life})`);
-      trailGlow.addColorStop(0.7, `rgba(55, 191, 165, ${0.03 * p.life})`);
+      trailGlow.addColorStop(0, `rgba(255, 255, 255, ${0.10 * p.life})`);
+      trailGlow.addColorStop(0.35, `rgba(55, 191, 165, ${0.07 * p.life})`);
+      trailGlow.addColorStop(0.7, `rgba(55, 191, 165, ${0.015 * p.life})`);
       trailGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
       ctx.fillStyle = trailGlow;
       ctx.fillRect(0, 0, W, H);
     });
 
-    // 2. Foco principal sobre o cursor (raio ampliado com fade in e fade out)
+    // 2. Foco principal sobre o cursor restrito ao fundo (mais suave, com fade in/out)
     if (mouse.intensity > 0.01) {
       const glowR = Math.max(300, Math.min(W, H) * 0.70);
       const glow = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, glowR);
-      glow.addColorStop(0, `rgba(255, 255, 255, ${0.24 * mouse.intensity})`);
-      glow.addColorStop(0.35, `rgba(55, 191, 165, ${0.16 * mouse.intensity})`);
-      glow.addColorStop(0.7, `rgba(55, 191, 165, ${0.04 * mouse.intensity})`);
+      glow.addColorStop(0, `rgba(255, 255, 255, ${0.14 * mouse.intensity})`);
+      glow.addColorStop(0.35, `rgba(55, 191, 165, ${0.09 * mouse.intensity})`);
+      glow.addColorStop(0.7, `rgba(55, 191, 165, ${0.02 * mouse.intensity})`);
       glow.addColorStop(1, 'rgba(0, 0, 0, 0)');
       ctx.fillStyle = glow;
       ctx.fillRect(0, 0, W, H);
     }
 
-    // Conexões entre conteúdos
+    // Conexões entre conteúdos (linhas mais claras)
     links.forEach(([a, b]) => {
       const near = hovered && (hovered === a || hovered === b);
-      ctx.strokeStyle = near ? 'rgba(255,255,255,0.55)' : 'rgba(255,255,255,0.09)';
-      ctx.lineWidth = near ? 1.2 : 0.7;
+      ctx.strokeStyle = near ? 'rgba(255, 255, 255, 0.75)' : 'rgba(255, 255, 255, 0.22)';
+      ctx.lineWidth = near ? 1.4 : 0.85;
       ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
     });
 
-    // Fios até o núcleo
+    // Fios até o núcleo (mais claros e visíveis com a cor da linha de pesquisa)
     items.forEach(it => {
       if (!it.line) return;
-      ctx.strokeStyle = rgba(it.color, 0.16 * it.alpha);
-      ctx.lineWidth = 0.6;
+      ctx.strokeStyle = rgba(it.color, 0.32 * it.alpha);
+      ctx.lineWidth = 0.75;
       ctx.beginPath(); ctx.moveTo(it.line.x, it.line.y); ctx.lineTo(it.x, it.y); ctx.stroke();
     });
 
