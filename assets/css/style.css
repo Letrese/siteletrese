@@ -61,6 +61,28 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  position: relative;
+}
+
+/* Efeito de degradê radial sutil que acompanha o cursor pelo corpo do site */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  background: radial-gradient(
+    580px circle at var(--cursor-x, -9999px) var(--cursor-y, -9999px),
+    rgba(55, 191, 165, 0.045),
+    rgba(55, 191, 165, 0.015) 45%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+body.has-cursor::after {
+  opacity: 1;
 }
 
 h1, h2, h3, h4, h5, h6 {

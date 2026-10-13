@@ -264,6 +264,18 @@
     g.addColorStop(0, sky[0]); g.addColorStop(1, sky[1]);
     ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
 
+    // Efeito de degradê que acompanha o mouse e clareia o banner
+    if (mouse.active && mouse.x >= -120 && mouse.x <= W + 120 && mouse.y >= -120 && mouse.y <= H + 120) {
+      const glowR = Math.max(180, Math.min(W, H) * 0.42);
+      const glow = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, glowR);
+      glow.addColorStop(0, 'rgba(255, 255, 255, 0.22)');
+      glow.addColorStop(0.35, 'rgba(55, 191, 165, 0.14)');
+      glow.addColorStop(0.7, 'rgba(55, 191, 165, 0.04)');
+      glow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      ctx.fillStyle = glow;
+      ctx.fillRect(0, 0, W, H);
+    }
+
     // Conexões entre conteúdos
     links.forEach(([a, b]) => {
       const near = hovered && (hovered === a || hovered === b);

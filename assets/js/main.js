@@ -160,4 +160,32 @@ document.addEventListener('DOMContentLoaded', () => {
       projectSearchInput.focus();
     });
   }
+
+  // 3. Efeito de degradê suave acompanhando o ponteiro do mouse pelo corpo do site
+  if (window.matchMedia('(pointer: fine)').matches) {
+    let cursorTicking = false;
+    let targetX = -9999;
+    let targetY = -9999;
+
+    document.addEventListener('pointermove', (e) => {
+      targetX = e.clientX;
+      targetY = e.clientY;
+      if (!document.body.classList.contains('has-cursor')) {
+        document.body.classList.add('has-cursor');
+      }
+
+      if (!cursorTicking) {
+        window.requestAnimationFrame(() => {
+          document.documentElement.style.setProperty('--cursor-x', `${targetX}px`);
+          document.documentElement.style.setProperty('--cursor-y', `${targetY}px`);
+          cursorTicking = false;
+        });
+        cursorTicking = true;
+      }
+    });
+
+    document.addEventListener('pointerleave', () => {
+      document.body.classList.remove('has-cursor');
+    });
+  }
 });
