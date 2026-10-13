@@ -6,7 +6,7 @@
  * - Pulso: projetos em andamento e notícias recentes
  * - Linhas finas: conteúdos que compartilham tags ou membros
  * - Fundo: varia conforme a hora do dia
- * - Mouse: repele os pontos, mostra o nome e abre a página ao clicar
+ * - Mouse: arrasta pontos/núcleos (o conjunto segue pela física), mostra o nome e abre a página ao clicar
  */
 (function () {
   const banner = document.getElementById('data-banner');
@@ -180,6 +180,7 @@
 
   // ---------- Física ----------
   const mouse = { x: -9999, y: -9999, active: false };
+  const drag = { node: null, startX: 0, startY: 0, moved: false, lastX: 0, lastY: 0, vx: 0, vy: 0 };
   function step(dt) {
     const orbitBase = Math.min(W, H) * 0.12;
 
@@ -193,10 +194,10 @@
         const min = orbitBase * 2.6;
         if (d < min) { const f = (min - d) / min * 0.04 * dt; l.vx += dx / d * f; l.vy += dy / d * f; }
       });
-      applyMouse(l, 0.4, dt);
+      if (applyDrag(l, dt)) return;
       l.vx *= 0.97; l.vy *= 0.97;
       const sp = Math.hypot(l.vx, l.vy);
-      if (sp > 0.6) { l.vx *= 0.6 / sp; l.vy *= 0.6 / sp; }
+      if (sp > 0.6) { const k = Math.max(0.6 / sp, 0.94); l.vx *= k; l.vy *= k; }
       l.x += l.vx * dt; l.y += l.vy * dt;
       clamp(l);
     });
@@ -217,17 +218,27 @@
           it.vx += dx / d * f; it.vy += dy / d * f; o.vx -= dx / d * f; o.vy -= dy / d * f;
         }
       }
-      applyMouse(it, 1.2, dt);
+      if (applyDrag(it, dt)) {
+        // Item arrastado puxa seu núcleo (e, por consequência, o conjunto)
+        if (it.line) {
+          it.line.vx += (it.x - it.line.x) * 0.002 * dt;
+          it.line.vy += (it.y - it.line.y) * 0.002 * dt;
+        }
+        return;
+      }
       it.vx *= 0.92; it.vy *= 0.92;
       it.x += it.vx * dt; it.y += it.vy * dt;
       clamp(it);
     });
   }
 
-  function applyMouse(p, strength, dt) {
-    if (!mouse.active) return;
-    const dx = p.x - mouse.x, dy = p.y - mouse.y, d = Math.hypot(dx, dy) || 0.01, R = 110;
-    if (d < R) { const f = (1 - d / R) * strength * dt; p.vx += dx / d * f; p.vy += dy / d * f; }
+  // Nó arrastado segue o ponteiro; guarda a velocidade para o "arremesso"
+  function applyDrag(p, dt) {
+    if (drag.node !== p || !drag.moved) return false;
+    p.vx = drag.vx; p.vy = drag.vy;
+    p.x = mouse.x; p.y = mouse.y;
+    clamp(p);
+    return true;
   }
 
   // ---------- Desenho ----------
@@ -307,6 +318,10 @@
     return best;
   }
 
+  function pickLine(x, y) {
+    return lines.find(l => Math.hypot(l.x - x, l.y - y) < l.r + 6) || null;
+  }
+
   function showTooltip(it) {
     if (!it) { tooltip.hidden = true; return; }
     const meta = [TYPE_LABEL[it.type], it.line ? it.line.name : null,
@@ -321,24 +336,55 @@
     tooltip.style.transform = `translate(${tx}px, ${ty}px)`;
   }
 
-  function onMove(e) {
+  function setPointer(e) {
     const rect = canvas.getBoundingClientRect();
     mouse.x = e.clientX - rect.left; mouse.y = e.clientY - rect.top; mouse.active = true;
+  }
+
+  function onMove(e) {
+    setPointer(e);
+    if (drag.node) {
+      if (!drag.moved && Math.hypot(mouse.x - drag.startX, mouse.y - drag.startY) > 4) drag.moved = true;
+      drag.vx = drag.vx * 0.5 + (mouse.x - drag.lastX) * 0.5;
+      drag.vy = drag.vy * 0.5 + (mouse.y - drag.lastY) * 0.5;
+      drag.lastX = mouse.x; drag.lastY = mouse.y;
+      if (drag.moved) { showTooltip(null); banner.style.cursor = 'grabbing'; }
+      if (reduceMotion && drag.moved) { applyDrag(drag.node, 1); draw(); }
+      return;
+    }
     hovered = pick(mouse.x, mouse.y);
-    banner.style.cursor = hovered ? 'pointer' : 'default';
+    const overLine = !hovered && pickLine(mouse.x, mouse.y);
+    banner.style.cursor = hovered ? 'pointer' : overLine ? 'grab' : 'default';
     showTooltip(hovered);
     if (reduceMotion) draw();
   }
 
   banner.addEventListener('pointermove', onMove);
-  banner.addEventListener('pointerdown', onMove);
+  banner.addEventListener('pointerdown', e => {
+    if (e.target.closest('a, .banner-legend, .banner-stats')) return;
+    setPointer(e);
+    const node = pick(mouse.x, mouse.y) || pickLine(mouse.x, mouse.y);
+    if (!node) return;
+    hovered = items.includes(node) ? node : null;
+    Object.assign(drag, { node, startX: mouse.x, startY: mouse.y, lastX: mouse.x, lastY: mouse.y, moved: false, vx: 0, vy: 0 });
+    banner.setPointerCapture(e.pointerId);
+    e.preventDefault();
+  });
+  function endDrag(e) {
+    if (!drag.node) return;
+    const { node, moved } = drag;
+    if (moved) { node.vx = drag.vx; node.vy = drag.vy; }
+    drag.node = null;
+    if (banner.hasPointerCapture && banner.hasPointerCapture(e.pointerId)) banner.releasePointerCapture(e.pointerId);
+    if (!moved && e.type === 'pointerup' && node.url) { window.location.href = node.url; return; }
+    onMove(e);
+  }
+  banner.addEventListener('pointerup', endDrag);
+  banner.addEventListener('pointercancel', endDrag);
   banner.addEventListener('pointerleave', () => {
+    if (drag.node) return;
     mouse.active = false; hovered = null; showTooltip(null); banner.style.cursor = 'default';
     if (reduceMotion) draw();
-  });
-  banner.addEventListener('click', e => {
-    if (e.target.closest('a, .banner-legend, .banner-stats')) return;
-    if (hovered && hovered.url) window.location.href = hovered.url;
   });
 
   // ---------- Loop ----------
