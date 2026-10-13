@@ -7,8 +7,8 @@ title: "Início"
 <section class="data-banner" id="data-banner" aria-label="Mapa interativo das linhas de pesquisa e conteúdos do grupo">
   <canvas id="banner-canvas" aria-hidden="true"></canvas>
   <div class="banner-overlay">
-    <span class="banner-kicker">Mapa vivo do Letrese</span>
-    <p class="banner-hint">Cada núcleo é uma linha de pesquisa. Passe o mouse sobre os pontos e clique para abrir.</p>
+    <span class="banner-kicker">letre<span class="brand-plus">+</span>se <span style="opacity:0.6">•</span> Mapa Vivo</span>
+    <p class="banner-hint">Cada núcleo é uma linha de pesquisa. Clique para acessar ou arraste para interagir com a física do mapa.</p>
   </div>
   <ul class="banner-stats" id="banner-stats"></ul>
   <ul class="banner-legend" id="banner-legend"></ul>
@@ -30,11 +30,21 @@ title: "Início"
 
 <!-- Apresentação Institucional do Grupo -->
 <section class="section-intro">
+  <div class="brand-mosaic-decor" aria-hidden="true"></div>
   <div class="container">
     <div class="intro-block">
       <span class="intro-affiliation">{{ site.data.group.institution }} • {{ site.data.group.department }}</span>
-      <h1 class="intro-title">{{ site.data.group.title }}</h1>
+      <h1 class="intro-title">letre<span class="brand-plus">+</span>se</h1>
+      <hr class="brand-divider-bar" aria-hidden="true">
       <p class="intro-subtitle">{{ site.data.group.full_name }}</p>
+
+      <!-- Pilares Multidisciplinares (Manual da Marca - pág. 6) -->
+      <div class="brand-pillars" aria-label="Áreas multidisciplinares do grupo">
+        <span class="brand-pillars-item">letras <span class="brand-plus">+</span></span>
+        <span class="brand-pillars-item">design <span class="brand-plus">+</span></span>
+        <span class="brand-pillars-item">estatística <span class="brand-plus">+</span></span>
+        <span class="brand-pillars-item">educação</span>
+      </div>
       
       <p class="intro-text">
         {{ site.data.group.description }}

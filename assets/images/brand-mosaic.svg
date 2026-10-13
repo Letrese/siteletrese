@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340" width="340" height="340" fill="none">
+  <!-- Mosaico modular de cruzes e pixels do manual da marca letre+se (pág 1) -->
+  <g fill="#37BFA5">
+    <!-- Bloco 1 (canto superior) -->
+    <rect x="250" y="30" width="30" height="30" />
+    <rect x="160" y="60" width="30" height="30" />
+    <rect x="250" y="60" width="30" height="30" />
+    <rect x="160" y="140" width="30" height="30" />
+
+    <!-- Cruz 1 (tamanho grande) -->
+    <!-- Cruz central: largura 30 por bloco -> 30x90 e 90x30 -->
+    <rect x="220" y="110" width="90" height="30" />
+    <rect x="250" y="80" width="30" height="90" />
+
+    <!-- Cruz 2 (à esquerda/abaixo) -->
+    <rect x="160" y="200" width="90" height="30" />
+    <rect x="190" y="170" width="30" height="90" />
+
+    <!-- Cruz 3 (abaixo) -->
+    <rect x="220" y="260" width="90" height="30" />
+    <rect x="250" y="230" width="30" height="90" />
+
+    <!-- Cruz 4 (lateral inferior esquerda) -->
+    <rect x="130" y="260" width="30" height="30" />
+    <rect x="160" y="290" width="30" height="30" />
+
+    <!-- Blocos esparsos de pixel -->
+    <rect x="190" y="80" width="30" height="30" />
+    <rect x="220" y="170" width="30" height="30" />
+    <rect x="280" y="200" width="30" height="30" />
+    <rect x="310" y="230" width="30" height="30" />
+    <rect x="190" y="290" width="30" height="30" />
+    <rect x="280" y="290" width="30" height="30" />
+  </g>
+</svg>

@@ -21,8 +21,8 @@
   const tooltip = document.getElementById('banner-tooltip');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const PALETTE = ['#7dd3fc', '#f9a8d4', '#fcd34d', '#86efac', '#c4b5fd', '#fdba74'];
-  const FREE_COLOR = '#e2e8f0';
+  const PALETTE = ['#37BFA5', '#5eead4', '#2dd4bf', '#34d399', '#a7f3d0', '#14b8a6'];
+  const FREE_COLOR = '#e2ece8';
   const TYPE_LABEL = { member: 'Membro', project: 'Projeto', post: 'Notícia' };
 
   const norm = s => String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -122,13 +122,13 @@
 
   // ---------- Fundo por hora do dia ----------
   const SKY = [
-    [0, '#0b1026', '#1e1b4b'], [5, '#1e1b4b', '#3b1d6e'], [7, '#4a2c6b', '#b4527a'],
-    [9, '#1e3a8a', '#0e7490'], [13, '#1d4ed8', '#0e7490'], [17, '#9a3412', '#6b21a8'],
-    [19, '#4c1d95', '#1e1b4b'], [22, '#0b1026', '#1e1b4b'], [24, '#0b1026', '#1e1b4b']
+    [0, '#041412', '#08231f'], [5, '#08231f', '#0d362f'], [7, '#0d362f', '#12483e'],
+    [9, '#092723', '#0e3a33'], [13, '#0b302a', '#145247'], [17, '#0d3730', '#165c50'],
+    [19, '#082723', '#051816'], [22, '#041412', '#08231f'], [24, '#041412', '#08231f']
   ];
   const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
   const mix = (a, b, t) => { const A = hex(a), B = hex(b); return `rgb(${A.map((v, i) => Math.round(v + (B[i] - v) * t)).join(',')})`; };
-  let sky = ['#0b1026', '#1e1b4b'];
+  let sky = ['#041412', '#08231f'];
   function updateSky() {
     const d = new Date();
     const h = d.getHours() + d.getMinutes() / 60;
@@ -287,7 +287,7 @@
       ctx.beginPath(); ctx.arc(l.x, l.y, l.r * 3.2, 0, Math.PI * 2); ctx.fill();
       ctx.fillStyle = l.color;
       ctx.beginPath(); ctx.arc(l.x, l.y, l.r, 0, Math.PI * 2); ctx.fill();
-      ctx.font = '600 12px Inter, sans-serif';
+      ctx.font = '700 13px Raleway, sans-serif';
       ctx.textAlign = 'center';
       ctx.fillStyle = 'rgba(255,255,255,0.88)';
       ctx.fillText(l.name.length > 34 ? l.name.slice(0, 32) + '…' : l.name, l.x, l.y + l.r + 18);

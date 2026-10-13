@@ -1,7 +1,7 @@
-# Configuração do Jekyll para o Portal Letrese
-title: "Letrese | Grupo de Pesquisa"
-tagline: "Letramentos, Semiótica, Educação e Tecnologias"
-description: "Portal institucional do Grupo de Pesquisa Letrese. Estudos, projetos de pesquisa, produção científica, notícias e currículo dos membros."
+# Configuração do Jekyll para o Portal letre+se
+title: "letre+se | grupo de pesquisa em letramento estatístico"
+tagline: "grupo de pesquisa em letramento estatístico"
+description: "O letre+se é um grupo de pesquisa formado por profissionais multidisciplinares com o intuito de somar os conhecimentos relacionados ao letramento estatístico e as contribuições das diversas áreas."
 url: "https://letrese.github.io"
 baseurl: "/siteletrese" # Mude para "" se utilizar domínio customizado próprio
 

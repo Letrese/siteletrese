@@ -1,12 +1,18 @@
-# Informações institucionais do Grupo Letrese
-title: "Letrese"
-full_name: "Grupo de Pesquisa em Letramentos, Semiótica, Educação e Tecnologias"
-short_description: "Grupo de pesquisa dedicado ao estudo dos multiletramentos, processos semióticos e mediações tecnológicas na educação."
+# Informações institucionais do Grupo letre+se (Manual da Marca 02/2025)
+title: "letre+se"
+full_name: "grupo de pesquisa em letramento estatístico"
+short_description: "Grupo de pesquisa formado por profissionais multidisciplinares com o intuito de somar os conhecimentos relacionados ao letramento estatístico e as contribuições das diversas áreas."
 institution: "Universidade Federal"
-department: "Departamento de Linguagens e Educação"
+department: "Departamento de Estatística e Educação"
 founding_year: "2020"
 
-description: "O Letrese reúne docentes, pesquisadores e estudantes com o objetivo de desenvolver investigações sobre práticas de linguagem em meios digitais, semiótica aplicada e o uso de tecnologias no ensino e na formação docente."
+description: "O letre+se é um grupo de pesquisa formado por profissionais multidisciplinares com o intuito de somar os conhecimentos relacionados ao letramento estatístico e as contribuições das diversas áreas."
+
+pillars:
+  - "letras"
+  - "design"
+  - "estatística"
+  - "educação"
 
 research_lines:
   - id: "Linha 1"
