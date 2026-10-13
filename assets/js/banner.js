@@ -82,14 +82,18 @@
     it.alpha = Number.isFinite(y) && maxY > minY ? 0.45 + 0.55 * (y - minY) / (maxY - minY) : 1;
     it.pulse = (it.type === 'project' && it.active) ||
       (it.type === 'post' && newestPost - Date.parse(it.date) < 120 * 864e5);
-    it.r = Math.max(3.5, Math.min(11, 3 + Math.sqrt(it.chars) / 7));
+    it.baseR = Math.max(3.5, Math.min(11, 3 + Math.sqrt(it.chars) / 7));
+    it.r = it.baseR;
     it.color = it.line ? it.line.color : FREE_COLOR;
     it.angle = Math.random() * Math.PI * 2;
     it.orbit = 0;
     it.speed = (0.0025 + Math.random() * 0.004) * (Math.random() < 0.5 ? -1 : 1);
     it.x = 0; it.y = 0; it.vx = 0; it.vy = 0;
   });
-  lines.forEach(l => { l.r = 12 + Math.min(10, l.count * 1.6); });
+  lines.forEach(l => {
+    l.baseR = 12 + Math.min(10, l.count * 1.6);
+    l.r = l.baseR;
+  });
 
   // Conexões (tags ou membros em comum)
   const links = [];
@@ -154,21 +158,44 @@
     canvas.width = W * dpr; canvas.height = H * dpr;
     canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    // Escala os raios proporcionalmente no mobile
+    const scale = W < 600 ? 0.74 : 1.0;
+    items.forEach(it => { it.r = Math.max(3, it.baseR * scale); });
+    lines.forEach(l => { l.r = l.baseR * scale; });
+
     if (first) placeInitial();
     lines.forEach(clamp); items.forEach(clamp);
   }
 
   function placeInitial() {
-    const n = lines.length || 1;
-    lines.forEach((l, i) => {
-      l.x = W * (i + 0.5) / n + (Math.random() - 0.5) * 40;
-      l.y = H * (0.45 + (i % 2 ? 0.12 : -0.08));
-      l.vx = (Math.random() - 0.5) * 0.3; l.vy = (Math.random() - 0.5) * 0.3;
-    });
+    const isMobile = W < 640;
+    if (isMobile) {
+      // No mobile: distribuição triangular/vertical balanceada para aproveitar o formato da tela
+      const positions = [
+        { x: W * 0.34, y: H * 0.32 },
+        { x: W * 0.68, y: H * 0.52 },
+        { x: W * 0.36, y: H * 0.72 }
+      ];
+      lines.forEach((l, i) => {
+        const pos = positions[i] || { x: W * 0.5, y: H * 0.5 };
+        l.x = pos.x + (Math.random() - 0.5) * 20;
+        l.y = pos.y + (Math.random() - 0.5) * 20;
+        l.vx = (Math.random() - 0.5) * 0.2; l.vy = (Math.random() - 0.5) * 0.2;
+      });
+    } else {
+      const n = lines.length || 1;
+      lines.forEach((l, i) => {
+        l.x = W * (i + 0.5) / n + (Math.random() - 0.5) * 40;
+        l.y = H * (0.45 + (i % 2 ? 0.12 : -0.08));
+        l.vx = (Math.random() - 0.5) * 0.3; l.vy = (Math.random() - 0.5) * 0.3;
+      });
+    }
+
     items.forEach(it => {
       const c = it.line || { x: W / 2, y: H / 2 };
-      it.x = c.x + (Math.random() - 0.5) * 60;
-      it.y = c.y + (Math.random() - 0.5) * 60;
+      it.x = c.x + (Math.random() - 0.5) * (isMobile ? 36 : 60);
+      it.y = c.y + (Math.random() - 0.5) * (isMobile ? 36 : 60);
     });
   }
 
@@ -184,7 +211,8 @@
   const glowTrail = [];
   const drag = { node: null, startX: 0, startY: 0, moved: false, lastX: 0, lastY: 0, vx: 0, vy: 0 };
   function step(dt) {
-    const orbitBase = Math.min(W, H) * 0.12;
+    const isMobile = W < 640;
+    const orbitBase = isMobile ? Math.min(W, H) * 0.15 : Math.min(W, H) * 0.12;
 
     // Núcleos: deriva suave + repulsão mútua
     lines.forEach((l, i) => {
@@ -193,7 +221,7 @@
       lines.forEach((o, j) => {
         if (i === j) return;
         const dx = l.x - o.x, dy = l.y - o.y, d2 = dx * dx + dy * dy + 1, d = Math.sqrt(d2);
-        const min = orbitBase * 2.6;
+        const min = orbitBase * (isMobile ? 2.1 : 2.6);
         if (d < min) { const f = (min - d) / min * 0.04 * dt; l.vx += dx / d * f; l.vy += dy / d * f; }
       });
       if (applyDrag(l, dt)) return;
@@ -208,7 +236,7 @@
     items.forEach((it, idx) => {
       const c = it.line || { x: W / 2, y: H / 2, r: 0 };
       it.angle += it.speed * dt;
-      const R = (it.line ? c.r + orbitBase * 0.55 : orbitBase * 1.6) + (idx % 3) * 16;
+      const R = (it.line ? c.r + orbitBase * (isMobile ? 0.62 : 0.55) : orbitBase * (isMobile ? 1.3 : 1.6)) + (idx % 3) * (isMobile ? 10 : 16);
       const tx = c.x + Math.cos(it.angle) * R, ty = c.y + Math.sin(it.angle) * R;
       it.vx += (tx - it.x) * 0.0035 * dt;
       it.vy += (ty - it.y) * 0.0035 * dt;
@@ -326,10 +354,13 @@
       ctx.beginPath(); ctx.arc(l.x, l.y, l.r * 3.2, 0, Math.PI * 2); ctx.fill();
       ctx.fillStyle = l.color;
       ctx.beginPath(); ctx.arc(l.x, l.y, l.r, 0, Math.PI * 2); ctx.fill();
-      ctx.font = '700 13px Raleway, sans-serif';
+      const isMobile = W < 640;
+      ctx.font = isMobile ? '700 10.5px Raleway, sans-serif' : '700 13px Raleway, sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillStyle = 'rgba(255,255,255,0.88)';
-      ctx.fillText(l.name.length > 34 ? l.name.slice(0, 32) + '…' : l.name, l.x, l.y + l.r + 18);
+      ctx.fillStyle = 'rgba(255,255,255,0.92)';
+      const maxLen = isMobile ? 22 : 34;
+      const label = l.name.length > maxLen ? l.name.slice(0, maxLen - 2) + '…' : l.name;
+      ctx.fillText(label, l.x, l.y + l.r + (isMobile ? 14 : 18));
     });
 
     // Itens
@@ -348,8 +379,8 @@
   }
 
   // ---------- Interação ----------
-  function pick(x, y) {
-    let best = null, bestD = 18;
+  function pick(x, y, maxDist = 18) {
+    let best = null, bestD = maxDist;
     items.forEach(it => {
       const d = Math.hypot(it.x - x, it.y - y) - it.r;
       if (d < bestD) { bestD = d; best = it; }
@@ -357,8 +388,8 @@
     return best;
   }
 
-  function pickLine(x, y) {
-    return lines.find(l => Math.hypot(l.x - x, l.y - y) < l.r + 6) || null;
+  function pickLine(x, y, extra = 6) {
+    return lines.find(l => Math.hypot(l.x - x, l.y - y) < l.r + extra) || null;
   }
 
   function showTooltip(it) {
@@ -370,9 +401,17 @@
     const span = document.createElement('span'); span.textContent = meta;
     tooltip.append(strong, span);
     tooltip.hidden = false;
-    const tx = Math.min(it.x + 14, W - tooltip.offsetWidth - 8);
-    const ty = Math.max(8, it.y - tooltip.offsetHeight - 12);
-    tooltip.style.transform = `translate(${tx}px, ${ty}px)`;
+
+    const isMobile = W < 640;
+    if (isMobile) {
+      const tx = Math.max(12, Math.min(W - tooltip.offsetWidth - 12, it.x - tooltip.offsetWidth / 2));
+      const ty = (it.y < 120) ? Math.min(H - tooltip.offsetHeight - 45, it.y + it.r + 14) : Math.max(54, it.y - tooltip.offsetHeight - 14);
+      tooltip.style.transform = `translate(${tx}px, ${ty}px)`;
+    } else {
+      const tx = Math.min(it.x + 14, W - tooltip.offsetWidth - 8);
+      const ty = Math.max(8, it.y - tooltip.offsetHeight - 12);
+      tooltip.style.transform = `translate(${tx}px, ${ty}px)`;
+    }
   }
 
   function setPointer(e) {
@@ -391,7 +430,13 @@
     }
 
     if (drag.node) {
-      if (!drag.moved && Math.hypot(mouse.x - drag.startX, mouse.y - drag.startY) > 4) drag.moved = true;
+      if (!drag.moved && Math.hypot(mouse.x - drag.startX, mouse.y - drag.startY) > 6) {
+        drag.moved = true;
+        if (banner.setPointerCapture && !banner.hasPointerCapture(e.pointerId)) {
+          try { banner.setPointerCapture(e.pointerId); } catch (_) {}
+        }
+      }
+      if (drag.moved && e.cancelable) e.preventDefault();
       drag.vx = drag.vx * 0.5 + (mouse.x - drag.lastX) * 0.5;
       drag.vy = drag.vy * 0.5 + (mouse.y - drag.lastY) * 0.5;
       drag.lastX = mouse.x; drag.lastY = mouse.y;
@@ -410,12 +455,21 @@
   banner.addEventListener('pointerdown', e => {
     if (e.target.closest('a, .banner-legend, .banner-stats')) return;
     setPointer(e);
-    const node = pick(mouse.x, mouse.y) || pickLine(mouse.x, mouse.y);
-    if (!node) return;
+    const isTouch = e.pointerType === 'touch';
+    const hitRadius = isTouch ? 30 : 18;
+    const lineExtra = isTouch ? 14 : 8;
+    const node = pick(mouse.x, mouse.y, hitRadius) || pickLine(mouse.x, mouse.y, lineExtra);
+    if (!node) {
+      if (isTouch) { hovered = null; showTooltip(null); }
+      return;
+    }
     hovered = items.includes(node) ? node : null;
+    showTooltip(hovered);
     Object.assign(drag, { node, startX: mouse.x, startY: mouse.y, lastX: mouse.x, lastY: mouse.y, moved: false, vx: 0, vy: 0 });
-    banner.setPointerCapture(e.pointerId);
-    e.preventDefault();
+    if (!isTouch) {
+      banner.setPointerCapture(e.pointerId);
+      e.preventDefault();
+    }
   });
   function endDrag(e) {
     if (!drag.node) return;

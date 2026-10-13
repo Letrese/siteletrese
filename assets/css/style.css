@@ -1112,15 +1112,72 @@ p {
 /* Responsividade */
 @media (max-width: 768px) {
   .data-banner {
-    height: 380px;
+    height: 480px;
+  }
+
+  .banner-overlay {
+    top: 0.85rem;
+    left: 1rem;
+    right: 1rem;
+    max-width: none;
+  }
+
+  .banner-kicker {
+    font-size: 0.72rem;
+  }
+
+  .banner-hint {
+    font-size: 0.76rem;
+    max-width: 310px;
+    line-height: 1.3;
   }
 
   .banner-legend {
+    display: flex;
+    left: 0.85rem;
+    right: 0.85rem;
+    bottom: 2.75rem;
+    max-width: calc(100% - 1.7rem);
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    gap: 0.35rem;
+  }
+
+  .banner-legend::-webkit-scrollbar {
+    display: none;
+  }
+
+  .banner-legend li {
+    padding: 0.2rem 0.55rem;
+    font-size: 0.70rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .banner-legend .legend-shapes {
     display: none;
   }
 
   .banner-stats {
-    max-width: calc(100% - 3rem);
+    bottom: 0.65rem;
+    left: 0.85rem;
+    right: 0.85rem;
+    max-width: calc(100% - 1.7rem);
+    gap: 0.3rem;
+    font-size: 0.70rem;
+  }
+
+  .banner-stats li {
+    padding: 0.2rem 0.5rem;
+    white-space: nowrap;
+  }
+
+  .banner-tooltip {
+    max-width: calc(100vw - 2rem);
+    font-size: 0.78rem;
+    padding: 0.45rem 0.7rem;
   }
 
   .nav-menu {
