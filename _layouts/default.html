@@ -20,7 +20,7 @@
   </noscript>
 
   <!-- Estilos Principais -->
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=lateral2">
 
   <!-- Open Graph / Redes Sociais -->
   <meta property="og:type" content="website">
@@ -31,6 +31,11 @@
 </head>
 <body>
   <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+  <!-- Padrões geométricos suaves restritos apenas às extremidades laterais da tela -->
+  <div class="lateral-pattern lateral-pattern-left" aria-hidden="true"></div>
+  <div class="lateral-pattern lateral-pattern-right" aria-hidden="true"></div>
+
   <div class="site-wrapper">
     {% unless page.hide_header %}
     {% include header.html %}
