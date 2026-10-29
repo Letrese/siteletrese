@@ -1,11 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160">
-  <defs>
-    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0d9488" />
-      <stop offset="100%" stop-color="#0f766e" />
-    </linearGradient>
-  </defs>
-  <rect width="160" height="160" rx="80" fill="url(#bg2)" />
+  <rect width="160" height="160" rx="80" fill="#0d9488" />
   <!-- Stylized Academic Avatar Icon (Male, beard) -->
   <circle cx="80" cy="62" r="30" fill="#f8fafc" />
   <path d="M 40 142 C 40 108 58 98 80 98 C 102 98 120 108 120 142 Z" fill="#e2e8f0" />

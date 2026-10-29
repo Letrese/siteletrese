@@ -130,7 +130,7 @@ a:hover {
   font-size: 0.9rem;
   z-index: 10000;
   text-decoration: none !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: none;
   transition: top 0.2s ease;
 }
 
@@ -341,7 +341,6 @@ p {
   border: 1px solid var(--color-border);
   border-left: 5px solid var(--color-primary);
   border-radius: var(--radius-sm);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
 .brand-pillars-item {
@@ -421,7 +420,6 @@ p {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: 1.5rem 1.75rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
 }
 
 .lines-list {
@@ -651,7 +649,7 @@ p {
   align-items: center;
   text-align: left;
   gap: 1.15rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .member-avatar-img {
@@ -679,7 +677,6 @@ p {
 .member-card:hover {
   transform: translateY(-2px);
   border-color: var(--color-primary);
-  box-shadow: 0 6px 18px rgba(55, 191, 165, 0.12);
 }
 
 .member-header {
@@ -794,12 +791,11 @@ p {
   border-radius: var(--radius-md);
   padding: 1.35rem;
   background-color: #ffffff;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .project-item:hover {
   border-color: var(--color-primary);
-  box-shadow: 0 4px 16px rgba(55, 191, 165, 0.1);
 }
 
 .project-item-header {
@@ -1100,9 +1096,7 @@ p {
 
 .banner-stats li,
 .banner-legend li {
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.85);
   border: 1px solid rgba(55, 191, 165, 0.35);
   border-radius: var(--radius-full);
   padding: 0.3rem 0.75rem;
@@ -1137,14 +1131,13 @@ p {
   top: 0;
   left: 0;
   max-width: 290px;
-  background: rgba(0, 0, 0, 0.92);
+  background: rgba(0, 0, 0, 0.95);
   border: 1.5px solid var(--color-primary);
   border-radius: var(--radius-md);
   padding: 0.55rem 0.85rem;
   font-size: 0.84rem;
   line-height: 1.35;
   pointer-events: none;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   z-index: 20;
 }
 
@@ -1242,7 +1235,6 @@ p {
     flex-direction: column;
     padding: 1rem 1.5rem;
     border-bottom: 2px solid var(--color-primary);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
     z-index: 100;
   }
 

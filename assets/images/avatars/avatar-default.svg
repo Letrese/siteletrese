@@ -1,24 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160">
-  <defs>
-    <linearGradient id="avatarBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#edf9f6" />
-      <stop offset="100%" stop-color="#daebe6" />
-    </linearGradient>
-    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#37BFA5" />
-      <stop offset="100%" stop-color="#1a826e" />
-    </linearGradient>
-  </defs>
-  
-  <!-- Fundo Circular Elegante -->
-  <circle cx="80" cy="80" r="76" fill="url(#avatarBg)" stroke="#b8e8de" stroke-width="2.5" />
+  <!-- Fundo Circular Elegante com cor sólida (sem degradê) -->
+  <circle cx="80" cy="80" r="76" fill="#edf9f6" stroke="#b8e8de" stroke-width="2.5" />
   
   <!-- Silhueta Minimalista Premium de Pesquisador/Autor -->
   <!-- Cabeça -->
-  <circle cx="80" cy="62" r="24" fill="url(#iconGrad)" />
+  <circle cx="80" cy="62" r="24" fill="#1a826e" />
   
   <!-- Ombros e Tronco Suave -->
-  <path d="M 38 126 C 38 100, 56 88, 80 88 C 104 88, 122 100, 122 126 C 122 133, 116 138, 108 138 L 52 138 C 44 138, 38 133, 38 126 Z" fill="url(#iconGrad)" />
+  <path d="M 38 126 C 38 100, 56 88, 80 88 C 104 88, 122 100, 122 126 C 122 133, 116 138, 108 138 L 52 138 C 44 138, 38 133, 38 126 Z" fill="#1a826e" />
   
   <!-- Toque Sutil da Marca: Detalhe do símbolo de soma "+" -->
   <circle cx="118" cy="46" r="14" fill="#ffffff" stroke="#b8e8de" stroke-width="1.5" />
