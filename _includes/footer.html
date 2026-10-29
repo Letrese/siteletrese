@@ -22,14 +22,6 @@
           <li><a href="{{ '/admin/' | relative_url }}">Painel CMS</a></li>
         </ul>
       </div>
-      {% else %}
-      <div class="footer-nav">
-        <ul class="footer-links">
-          {% if site.data.group.contact.lattes_group_url %}
-            <li><a href="{{ site.data.group.contact.lattes_group_url }}" target="_blank" rel="noopener noreferrer">Diretório Oficial de Grupos do CNPq &rarr;</a></li>
-          {% endif %}
-        </ul>
-      </div>
       {% endunless %}
     </div>
 
