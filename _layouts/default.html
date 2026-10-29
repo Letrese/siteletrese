@@ -26,7 +26,9 @@
 </head>
 <body>
   <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+  {% unless page.hide_header %}
   {% include header.html %}
+  {% endunless %}
 
   <main id="main-content" role="main">
     {{ content }}
