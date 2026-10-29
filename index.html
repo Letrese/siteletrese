@@ -31,12 +31,19 @@ hide_header: true
       <!-- Título Principal Semântico Acessível (WCAG AA - 1 H1 por página) -->
       <h1 class="sr-only">{{ site.data.group.title }} - {{ site.data.group.full_name }}</h1>
 
-      <!-- Logotipo Oficial da Marca Horizontal (PNG Transparente Original) -->
+      <!-- Logotipo Oficial da Marca Horizontal (Otimizado WebP + Fallback PNG) -->
       <div style="margin: 0.5rem 0 1.25rem;">
-        <img src="{{ '/assets/images/logo-horizontal.png' | relative_url }}"
-          alt="letre+se - grupo de pesquisa em letramento estatístico"
-          class="hero-logo-img"
-          style="max-width: 100%; width: 520px; height: auto; display: block;" />
+        <picture>
+          <source type="image/webp" srcset="{{ '/assets/images/logo-horizontal-520.webp' | relative_url }} 520w, {{ '/assets/images/logo-horizontal.webp' | relative_url }} 898w" sizes="(max-width: 600px) 100vw, 520px">
+          <img src="{{ '/assets/images/logo-horizontal.png' | relative_url }}"
+            alt="letre+se - grupo de pesquisa em letramento estatístico"
+            class="hero-logo-img"
+            width="520"
+            height="80"
+            fetchpriority="high"
+            decoding="async"
+            style="max-width: 100%; width: 520px; height: auto; display: block;" />
+        </picture>
       </div>
 
       <hr class="brand-divider-bar" style="width: 56px; height: 3px; margin: 1.25rem 0;" aria-hidden="true">

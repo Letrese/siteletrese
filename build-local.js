@@ -252,6 +252,9 @@ async function runBuild() {
   if (fs.existsSync(path.join(ROOT_DIR, 'CNAME'))) {
     fs.copyFileSync(path.join(ROOT_DIR, 'CNAME'), path.join(SITE_DIR, 'CNAME'));
   }
+  if (fs.existsSync(path.join(ROOT_DIR, 'serve.json'))) {
+    fs.copyFileSync(path.join(ROOT_DIR, 'serve.json'), path.join(SITE_DIR, 'serve.json'));
+  }
 
   console.log('--- Compilação estática concluída com sucesso em _site/ ---');
 }
