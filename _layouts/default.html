@@ -26,15 +26,17 @@
 </head>
 <body>
   <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
-  {% unless page.hide_header %}
-  {% include header.html %}
-  {% endunless %}
+  <div class="site-wrapper">
+    {% unless page.hide_header %}
+    {% include header.html %}
+    {% endunless %}
 
-  <main id="main-content" role="main">
-    {{ content }}
-  </main>
+    <main id="main-content" role="main">
+      {{ content }}
+    </main>
 
-  {% include footer.html %}
+    {% include footer.html %}
+  </div>
 
   <!-- Scripts Interativos -->
   <script src="{{ '/assets/js/main.js' | relative_url }}"></script>

@@ -226,7 +226,15 @@ function copyRecursive(src, dest) {
     if (entry.isDirectory()) {
       copyRecursive(srcPath, destPath);
     } else {
-      fs.copyFileSync(srcPath, destPath);
+      try {
+        fs.copyFileSync(srcPath, destPath);
+      } catch (err) {
+        try {
+          fs.writeFileSync(destPath, fs.readFileSync(srcPath));
+        } catch (err2) {
+          console.warn(`[Aviso] Falha ao copiar ${destPath}: ${err2.message}`);
+        }
+      }
     }
   }
 }

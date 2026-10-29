@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" fill="none">
+  <!-- Textura geométrica sutil com círculo, triângulo, quadrado e elementos da marca Letre+se -->
+  
+  <!-- Círculo delineado -->
+  <circle cx="38" cy="38" r="15" stroke="#37BFA5" stroke-width="1.5" opacity="0.32" />
+  
+  <!-- Triângulo delineado -->
+  <polygon points="126,18 144,50 108,50" stroke="#125c4e" stroke-width="1.5" opacity="0.28" fill="none" stroke-linejoin="round" />
+  
+  <!-- Quadrado delineado rotacionado -->
+  <rect x="25" y="105" width="22" height="22" rx="2" stroke="#212826" stroke-width="1.5" opacity="0.25" fill="none" transform="rotate(12 36 116)" />
+  
+  <!-- Círculo sutil menor delineado -->
+  <circle cx="86" cy="142" r="7" stroke="#4a5754" stroke-width="1.25" opacity="0.22" />
+  
+  <!-- Quadrado pequeno reto -->
+  <rect x="72" y="24" width="12" height="12" rx="1.5" stroke="#125c4e" stroke-width="1.25" opacity="0.26" fill="none" />
+  
+  <!-- Triângulo preenchido sutil -->
+  <polygon points="80,94 88,108 72,108" fill="#37BFA5" opacity="0.22" />
+  
+  <!-- Ponto circular preenchido -->
+  <circle cx="132" cy="122" r="4" fill="#37BFA5" opacity="0.30" />
+  
+  <!-- Símbolo '+' da marca Letre+se -->
+  <line x1="126" y1="78" x2="126" y2="90" stroke="#37BFA5" stroke-width="1.5" stroke-linecap="round" opacity="0.30" />
+  <line x1="120" y1="84" x2="132" y2="84" stroke="#37BFA5" stroke-width="1.5" stroke-linecap="round" opacity="0.30" />
+</svg>
