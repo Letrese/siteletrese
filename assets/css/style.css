@@ -18,8 +18,10 @@
   --color-text-secondary: #212826;   /* Texto de parágrafo de altíssima legibilidade (14:1) */
   --color-text-muted: #4a5754;       /* Metadados e datas (> 7.5:1) compatível com WCAG AA */
   --color-bg: #ffffff;
-  --color-bg-subtle: #f6faf9;        /* Seções alternadas suaves */
+  --color-bg-subtle: #f3f4f6;        /* Seções alternadas suaves em cinza neutro */
+  --color-bg-team: #f3f4f6;          /* Fundo da equipe cinza neutro (sem tom azulado) */
   --color-border: #daebe6;
+  --color-border-subtle: #e5e7eb;    /* Borda cinza neutra para áreas de fundo cinza */
   --color-border-hover: #37BFA5;
 
   /* Badges de Status da Marca */
@@ -976,7 +978,7 @@ p {
   font-size: 0.84rem;
 }
 
-/* Rodapé Institucional */
+/* Rodapé Institucional (Largura Total da Tela) */
 .site-footer {
   margin-top: auto;
   border-top: 3px solid var(--color-primary);
@@ -984,6 +986,9 @@ p {
   padding: 3.5rem 0 2rem;
   font-size: 0.9rem;
   color: #d1d5db;
+  width: 100%;
+  position: relative;
+  z-index: 20;
 }
 
 .footer-content {
@@ -1336,12 +1341,11 @@ p {
   }
 }
 
-/* Estrutura de conteúdo centralizado sobre fundo branco */
+/* Estrutura de conteúdo com seções de largura total (Full-Width) */
 .site-wrapper {
-  max-width: var(--container-width);
   width: 100%;
-  margin: 0 auto;
-  background-color: #ffffff;
+  margin: 0;
+  background-color: transparent;
   position: relative;
   z-index: 2;
   display: flex;
@@ -1352,7 +1356,17 @@ p {
 
 .site-wrapper > main {
   flex: 1;
-  background-color: #ffffff;
+  width: 100%;
+}
+
+/* Seção da Equipe com fundo cinza de largura total */
+.section-team {
+  background-color: var(--color-bg-team);
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+  width: 100%;
+  position: relative;
+  z-index: 5;
 }
 
 /* Padrões geométricos suaves restritos apenas às extremidades laterais */

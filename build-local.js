@@ -255,6 +255,9 @@ async function runBuild() {
   if (fs.existsSync(path.join(ROOT_DIR, 'serve.json'))) {
     fs.copyFileSync(path.join(ROOT_DIR, 'serve.json'), path.join(SITE_DIR, 'serve.json'));
   }
+  if (fs.existsSync(path.join(ROOT_DIR, 'favicon.ico'))) {
+    fs.copyFileSync(path.join(ROOT_DIR, 'favicon.ico'), path.join(SITE_DIR, 'favicon.ico'));
+  }
 
   console.log('--- Compilação estática concluída com sucesso em _site/ ---');
 }
