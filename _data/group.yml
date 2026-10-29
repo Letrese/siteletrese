@@ -1,12 +1,12 @@
-# Informações institucionais do Grupo letre+se (Manual da Marca 02/2025)
+# Informações institucionais do Grupo letre+se (Manual da Marca 02/2025 e Diretório de Grupos do CNPq)
 title: "letre+se"
-full_name: "grupo de pesquisa em letramento estatístico"
-short_description: "Grupo de pesquisa formado por profissionais multidisciplinares com o intuito de somar os conhecimentos relacionados ao letramento estatístico e as contribuições das diversas áreas."
-institution: "Universidade Federal"
-department: "Departamento de Estatística e Educação"
-founding_year: "2020"
+full_name: "grupo de pesquisa em letramento estatístico e multiletramentos"
+short_description: "Grupo de pesquisa dedicado ao estudo do letramento estatístico e suas interdisciplinaridades, com foco no desenvolvimento de competências para o exercício da cidadania plena e crítica."
+institution: "Fundação Instituto Brasileiro de Geografia e Estatística - IBGE"
+department: "Escola Nacional de Ciências Estatísticas - ENCE"
+founding_year: "2025"
 
-description: "O letre+se é um grupo de pesquisa formado por profissionais multidisciplinares com o intuito de somar os conhecimentos relacionados ao letramento estatístico e as contribuições das diversas áreas."
+description: "O Grupo Letre-se tem por objetivo pesquisar sobre o letramento estatístico e suas interdisciplinaridades a fim de desenvolver competências para o exercício de uma cidadania plena e crítica. A promoção do letramento ocorre por meio do desenvolvimento e da curadoria de experiências e materiais instrucionais e lúdicos, promoção de eventos acadêmicos e culturais e ações de divulgação e popularização científica. O grupo reúne pesquisadores de instituições e áreas diversas para integrar saberes entre estatística, educação, linguagem e design."
 
 pillars:
   - "letras"
@@ -16,22 +16,15 @@ pillars:
 
 research_lines:
   - id: "Linha 1"
-    name: "Multiletramentos e Cultura Digital"
-    description: "Estudo das práticas de leitura, escrita e multimodalidade em ambientes hipermidiáticos e plataformas digitais."
-    coordinator: "Dra. Helena Silva"
-  - id: "Linha 2"
-    name: "Semiótica Aplicada e Práticas Sociodiscursivas"
-    description: "Análise dos processos de significação, linguagens audiovisuais e narrativas contemporâneas."
-    coordinator: "Dr. Carlos Eduardo Moraes"
-  - id: "Linha 3"
-    name: "Tecnologias na Educação e Formação Docente"
-    description: "Pesquisa sobre a integração de tecnologias digitais, recursos educacionais e práticas pedagógicas."
-    coordinator: "Dra. Helena Silva"
+    name: "Letramento estatístico e suas multidisciplinaridades"
+    description: "Investigação dos multiletramentos, da linguagem de dados e da interdisciplinaridade do letramento estatístico, promovendo competências para o exercício crítico e cidadão através da ciência, educação e divulgação científica."
+    coordinator: "Dra. Renata Souza Bueno e Dra. Bianca Walsh"
 
 contact:
-  email: "contato@letrese.uf.br"
-  phone: "+55 (11) 3000-0000"
-  address: "Pavilhão de Humanidades, Sala 304"
-  city_state: "São Paulo - SP, Brasil"
-  lattes_group_url: "http://dgp.cnpq.br/dgp/espelhogrupo/0000000000000000"
+  email: "renata.bueno@ibge.gov.br"
+  phone: "(21) 2142-8764"
+  address: "Rua André Cavalcanti, 106 - Centro"
+  city_state: "Rio de Janeiro - RJ, Brasil"
+  cep: "20231-050"
+  lattes_group_url: "http://dgp.cnpq.br/dgp/espelhogrupo/830138"
   github_repo: "https://github.com/Letrese/siteletrese"

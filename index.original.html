@@ -1,0 +1,99 @@
+---
+layout: default
+title: "Início (Versão Completa)"
+---
+
+<!-- Banner interativo: mapa vivo dos conteúdos do site (gerado a partir dos dados no build) -->
+<section class="data-banner" id="data-banner" aria-label="Mapa interativo das linhas de pesquisa e conteúdos do grupo">
+  <canvas id="banner-canvas" aria-hidden="true"></canvas>
+  <div class="banner-overlay">
+    <span class="banner-kicker">letre<span class="brand-plus">+</span>se <span style="opacity:0.6">•</span> Mapa Vivo</span>
+    <p class="banner-hint">Cada núcleo é uma linha de pesquisa. Clique para acessar ou arraste para interagir com a física do mapa.</p>
+  </div>
+  <ul class="banner-stats" id="banner-stats"></ul>
+  <ul class="banner-legend" id="banner-legend"></ul>
+  <div class="banner-tooltip" id="banner-tooltip" role="tooltip" hidden></div>
+</section>
+
+<script id="banner-data" type="application/json">
+{
+  "lines": [{% for l in site.data.group.research_lines %}{"name": {{ l.name | jsonify }}, "coordinator": {{ l.coordinator | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}],
+  "items": [
+    {% for m in site.members %}{"type": "member", "title": {{ m.title | jsonify }}, "name": {{ m.name | jsonify }}, "url": {{ m.url | relative_url | jsonify }}, "tags": {{ m.interests | jsonify }}, "chars": {{ m.content | strip_html | size }}},
+    {% endfor %}{% for p in site.projects %}{"type": "project", "title": {{ p.title | jsonify }}, "url": {{ p.url | relative_url | jsonify }}, "line": {{ p.research_line | jsonify }}, "team": {{ p.team | jsonify }}, "summary": {{ p.summary | jsonify }}, "year": {{ p.start_year | jsonify }}, "active": {% if p.status == "Em andamento" %}true{% else %}false{% endif %}, "chars": {{ p.content | strip_html | size }}},
+    {% endfor %}{% for post in site.posts %}{"type": "post", "title": {{ post.title | jsonify }}, "url": {{ post.url | relative_url | jsonify }}, "tags": {{ post.tags | jsonify }}, "summary": {{ post.summary | jsonify }}, "date": {{ post.date | date: "%Y-%m-%d" | jsonify }}, "chars": {{ post.content | strip_html | size }}},
+    {% endfor %}null
+  ]
+}
+</script>
+<script src="{{ '/assets/js/banner.js' | relative_url }}" defer></script>
+
+<!-- Apresentação Institucional do Grupo -->
+<section class="section-intro">
+  <div class="brand-mosaic-decor" aria-hidden="true"></div>
+  <div class="container">
+    <div class="intro-block">
+      <span class="intro-affiliation">{{ site.data.group.institution }} • {{ site.data.group.department }}</span>
+      <h1 class="intro-title">letre<span class="brand-plus">+</span>se</h1>
+      <hr class="brand-divider-bar" aria-hidden="true">
+      <p class="intro-subtitle">{{ site.data.group.full_name }}</p>
+
+      <!-- Pilares Multidisciplinares (Manual da Marca - pág. 6) -->
+      <div class="brand-pillars" aria-label="Áreas multidisciplinares do grupo">
+        <span class="brand-pillars-item">letras <span class="brand-plus">+</span></span>
+        <span class="brand-pillars-item">design <span class="brand-plus">+</span></span>
+        <span class="brand-pillars-item">estatística <span class="brand-plus">+</span></span>
+        <span class="brand-pillars-item">educação</span>
+      </div>
+      
+      <p class="intro-text">
+        {{ site.data.group.description }}
+      </p>
+
+      <div class="intro-lines">
+        <h2 class="subheading">Linhas de Pesquisa</h2>
+        <ul class="lines-list">
+          {% for line in site.data.group.research_lines %}
+            <li>
+              <strong>{{ line.name }}</strong>: {{ line.description }}
+              <span class="line-lead">Coordenação: {{ line.coordinator }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Notícias e Publicações Recentes -->
+<section class="section">
+  <div class="container">
+    <div class="section-heading-row">
+      <h2 class="section-title">Notícias e Comunicados</h2>
+      <a href="{{ '/noticias/' | relative_url }}" class="link-more">Ver todas as notícias &rarr;</a>
+    </div>
+
+    <div class="posts-list">
+      {% for post in site.posts limit: 3 %}
+        {% include post_card.html %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Projetos em Andamento -->
+<section class="section section-border-top">
+  <div class="container">
+    <div class="section-heading-row">
+      <h2 class="section-title">Projetos de Pesquisa</h2>
+      <a href="{{ '/projetos/' | relative_url }}" class="link-more">Ver todos os projetos &rarr;</a>
+    </div>
+
+    <div class="projects-list">
+      {% assign current_projects = site.projects | where: "status", "Em andamento" %}
+      {% for project in current_projects limit: 3 %}
+        {% include project_card.html %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -2,8 +2,8 @@
 title: "letre+se | grupo de pesquisa em letramento estatístico"
 tagline: "grupo de pesquisa em letramento estatístico"
 description: "O letre+se é um grupo de pesquisa formado por profissionais multidisciplinares com o intuito de somar os conhecimentos relacionados ao letramento estatístico e as contribuições das diversas áreas."
-url: "https://letrese.github.io"
-baseurl: "/siteletrese" # Mude para "" se utilizar domínio customizado próprio
+url: "https://siteletrese.uniriotec.br"
+baseurl: "" # Domínio customizado próprio configurado via CNAME
 
 # Informações Institucionais de Contato
 email: "contato@letrese.uf.br"

@@ -1,99 +1,225 @@
 ---
 layout: default
 title: "Início"
+hide_nav: true
 ---
 
-<!-- Banner interativo: mapa vivo dos conteúdos do site (gerado a partir dos dados no build) -->
-<section class="data-banner" id="data-banner" aria-label="Mapa interativo das linhas de pesquisa e conteúdos do grupo">
-  <canvas id="banner-canvas" aria-hidden="true"></canvas>
-  <div class="banner-overlay">
-    <span class="banner-kicker">letre<span class="brand-plus">+</span>se <span style="opacity:0.6">•</span> Mapa Vivo</span>
-    <p class="banner-hint">Cada núcleo é uma linha de pesquisa. Clique para acessar ou arraste para interagir com a física do mapa.</p>
-  </div>
-  <ul class="banner-stats" id="banner-stats"></ul>
-  <ul class="banner-legend" id="banner-legend"></ul>
-  <div class="banner-tooltip" id="banner-tooltip" role="tooltip" hidden></div>
-</section>
-
-<script id="banner-data" type="application/json">
-{
-  "lines": [{% for l in site.data.group.research_lines %}{"name": {{ l.name | jsonify }}, "coordinator": {{ l.coordinator | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}],
-  "items": [
-    {% for m in site.members %}{"type": "member", "title": {{ m.title | jsonify }}, "name": {{ m.name | jsonify }}, "url": {{ m.url | relative_url | jsonify }}, "tags": {{ m.interests | jsonify }}, "chars": {{ m.content | strip_html | size }}},
-    {% endfor %}{% for p in site.projects %}{"type": "project", "title": {{ p.title | jsonify }}, "url": {{ p.url | relative_url | jsonify }}, "line": {{ p.research_line | jsonify }}, "team": {{ p.team | jsonify }}, "summary": {{ p.summary | jsonify }}, "year": {{ p.start_year | jsonify }}, "active": {% if p.status == "Em andamento" %}true{% else %}false{% endif %}, "chars": {{ p.content | strip_html | size }}},
-    {% endfor %}{% for post in site.posts %}{"type": "post", "title": {{ post.title | jsonify }}, "url": {{ post.url | relative_url | jsonify }}, "tags": {{ post.tags | jsonify }}, "summary": {{ post.summary | jsonify }}, "date": {{ post.date | date: "%Y-%m-%d" | jsonify }}, "chars": {{ post.content | strip_html | size }}},
-    {% endfor %}null
-  ]
-}
-</script>
-<script src="{{ '/assets/js/banner.js' | relative_url }}" defer></script>
-
-<!-- Apresentação Institucional do Grupo -->
-<section class="section-intro">
+<!-- Seção Hero / Apresentação Institucional do Grupo de Pesquisa -->
+<section class="section-intro" style="position: relative; padding: 3.5rem 0 3rem; background: linear-gradient(180deg, #ffffff 0%, var(--color-primary-subtle) 100%); border-bottom: 1px solid var(--color-border);">
   <div class="brand-mosaic-decor" aria-hidden="true"></div>
   <div class="container">
-    <div class="intro-block">
-      <span class="intro-affiliation">{{ site.data.group.institution }} • {{ site.data.group.department }}</span>
-      <h1 class="intro-title">letre<span class="brand-plus">+</span>se</h1>
-      <hr class="brand-divider-bar" aria-hidden="true">
-      <p class="intro-subtitle">{{ site.data.group.full_name }}</p>
-
-      <!-- Pilares Multidisciplinares (Manual da Marca - pág. 6) -->
-      <div class="brand-pillars" aria-label="Áreas multidisciplinares do grupo">
-        <span class="brand-pillars-item">letras <span class="brand-plus">+</span></span>
-        <span class="brand-pillars-item">design <span class="brand-plus">+</span></span>
-        <span class="brand-pillars-item">estatística <span class="brand-plus">+</span></span>
-        <span class="brand-pillars-item">educação</span>
-      </div>
+    <div class="intro-block" style="max-width: 900px; margin: 0; text-align: left;">
       
-      <p class="intro-text">
-        {{ site.data.group.description }}
-      </p>
+      <!-- Aviso de status institucional -->
+      <div style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: #ffffff; border: 1px solid var(--color-primary-border); padding: 0.35rem 0.9rem; border-radius: var(--radius-full); margin-bottom: 1.25rem; box-shadow: 0 2px 6px rgba(0,0,0,0.04);">
+        <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background-color: var(--color-primary); animation: pulse 2s infinite;"></span>
+        <span style="font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-primary-dark);">
+          Em construção
+        </span>
+      </div>
 
-      <div class="intro-lines">
-        <h2 class="subheading">Linhas de Pesquisa</h2>
-        <ul class="lines-list">
-          {% for line in site.data.group.research_lines %}
-            <li>
-              <strong>{{ line.name }}</strong>: {{ line.description }}
-              <span class="line-lead">Coordenação: {{ line.coordinator }}</span>
-            </li>
-          {% endfor %}
-        </ul>
+      <span class="intro-affiliation" style="display: block; font-size: 0.9rem; font-weight: 700; color: var(--color-text-muted); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;">
+        {{ site.data.group.institution }} • {{ site.data.group.department }}
+      </span>
+
+      <!-- Logotipo Oficial da Marca -->
+      <div style="margin-bottom: 1rem;">
+        <img src="{{ '/assets/images/logo-horizontal.jpg' | relative_url }}" alt="letre+se - grupo de pesquisa em letramento estatístico" style="max-width: 100%; width: 440px; height: auto; display: block;" />
+      </div>
+
+      <hr class="brand-divider-bar" style="width: 56px; height: 3px; margin: 1.25rem 0;" aria-hidden="true">
+
+      <!-- Breve Descrição do Grupo (Oficial CNPq) -->
+      <div style="background-color: #ffffff; border: 1px solid var(--color-border); border-left: 4px solid var(--color-primary); padding: 1.75rem 2rem; border-radius: var(--radius-md); text-align: left; box-shadow: 0 4px 14px rgba(0,0,0,0.03); margin-top: 1.25rem;">
+        <h2 style="font-size: 1.15rem; font-weight: 800; color: var(--color-black); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-primary-dark);">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            <path d="M2 17l10 5 10-5"></path>
+            <path d="M2 12l10 5 10-5"></path>
+          </svg>
+          Sobre o Grupo
+        </h2>
+        <p style="font-size: 1.05rem; line-height: 1.75; color: var(--color-text-secondary); margin-bottom: 1rem;">
+          {{ site.data.group.description }}
+        </p>
+        <p style="font-size: 0.92rem; color: var(--color-text-muted); margin-bottom: 0;">
+          <strong>Líderes do Grupo:</strong> Dra. Renata Souza Bueno e Dra. Bianca Walsh • 
+          <a href="{{ site.data.group.contact.lattes_group_url }}" target="_blank" rel="noopener noreferrer" style="font-weight: 700; text-decoration: underline; color: var(--color-primary-dark);">
+            Espelho Oficial do Grupo no Diretório CNPq &rarr;
+          </a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Linha de Pesquisa (Apenas uma, conforme cadastro oficial no CNPq) -->
+<section class="section" style="padding: 3.5rem 0; background-color: #ffffff;">
+  <div class="container">
+    <div style="max-width: 900px; margin: 0; text-align: left;">
+      <div class="section-heading-row" style="margin-bottom: 1.5rem; justify-content: flex-start; align-items: center; gap: 0.75rem;">
+        <div style="width: 32px; height: 32px; border-radius: var(--radius-sm); background-color: var(--color-primary-subtle); display: flex; align-items: center; justify-content: center; color: var(--color-primary-dark); font-weight: 800;">
+          1
+        </div>
+        <div>
+          <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-muted); display: block;">
+            Eixo Temático de Investigação
+          </span>
+          <h2 class="section-title" style="margin: 0; font-size: 1.65rem;">Linha de Pesquisa</h2>
+        </div>
+      </div>
+
+      {% for line in site.data.group.research_lines %}
+      <div style="border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.75rem 2rem; background: var(--color-bg-subtle); border-top: 4px solid var(--color-primary); box-shadow: 0 4px 16px rgba(0,0,0,0.03);">
+        <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--color-black); margin-bottom: 0.75rem;">
+          {{ line.name }}
+        </h3>
+        
+        <p style="font-size: 1.02rem; line-height: 1.75; color: var(--color-text-secondary); margin-bottom: 1.25rem;">
+          {{ line.description }}
+        </p>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--color-border); font-size: 0.9rem;">
+          <div style="color: var(--color-text-secondary);">
+            <strong style="color: var(--color-black);">Coordenação da Linha:</strong> {{ line.coordinator }}
+          </div>
+          <div style="display: inline-flex; align-items: center; gap: 0.35rem; color: var(--color-primary-dark); font-weight: 700;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            <span>8 Pesquisadores Vinculados</span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Lista de Membros (Pesquisadores cadastrados no espelho do CNPq) -->
+<section class="section section-border-top" style="padding: 3.5rem 0; background-color: var(--color-bg-subtle);">
+  <div class="container">
+    <div style="max-width: 1000px; margin: 0; text-align: left;">
+      <div class="section-heading-row" style="margin-bottom: 2rem;">
+        <div>
+          <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-primary-dark); display: block; margin-bottom: 0.25rem;">
+            Equipe Multidisciplinar
+          </span>
+          <h2 class="section-title">Membros e Pesquisadores</h2>
+        </div>
+        <a href="{{ site.data.group.contact.lattes_group_url }}" target="_blank" rel="noopener noreferrer" class="link-more">
+          Consultar espelho oficial no CNPq &rarr;
+        </a>
+      </div>
+
+      <div class="members-grid" style="grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.25rem;">
+        {% for member in site.data.members %}
+        <div class="member-card" style="position: relative; display: flex; flex-direction: column; justify-content: space-between; text-align: left; padding: 1.25rem;">
+          <div>
+            <div class="member-header" style="align-items: center; gap: 0.85rem;">
+              <img src="{{ member.photo | relative_url }}" alt="{{ member.name }}" class="member-photo" width="54" height="54" loading="lazy" style="border: 2px solid var(--color-primary-border); background-color: #ffffff;">
+              <div>
+                <h3 class="member-name" style="font-size: 1.05rem; font-weight: 700;">
+                  {{ member.name }}
+                </h3>
+                <span class="member-role" style="font-weight: 600; color: var(--color-primary-dark); font-size: 0.82rem;">
+                  {{ member.role }}
+                </span>
+                <span style="display: inline-block; font-size: 0.72rem; background: var(--color-primary-subtle); color: var(--color-primary-dark); padding: 0.15rem 0.45rem; border-radius: var(--radius-sm); font-weight: 700; margin-top: 0.2rem;">
+                  Titulação: {{ member.titulation }}
+                </span>
+              </div>
+            </div>
+
+            <p style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 0.75rem;">
+              {{ member.institution }}
+            </p>
+
+            {% if member.interests %}
+            <div class="member-interests" style="margin-bottom: 0.5rem;">
+              {% for topic in member.interests %}
+                <span class="interest-item" style="font-size: 0.75rem;">{{ topic }}</span>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+
+          <div class="member-links" style="display: flex; align-items: center; justify-content: space-between; font-size: 0.8rem; padding-top: 0.65rem; border-top: 1px solid var(--color-border); margin-top: 0.85rem;">
+            {% if member.email %}
+              <a href="mailto:{{ member.email }}" class="link-academic" style="display: inline-flex; align-items: center; gap: 0.3rem;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                Email
+              </a>
+            {% else %}
+              <span style="color: var(--color-text-muted); font-size: 0.78rem;">Pesquisador Cadastrado</span>
+            {% endif %}
+
+            <a href="{{ site.data.group.contact.lattes_group_url }}" target="_blank" rel="noopener noreferrer" class="link-academic" style="color: var(--color-text-secondary);">
+              Lattes / CNPq &rarr;
+            </a>
+          </div>
+        </div>
+        {% endfor %}
       </div>
     </div>
   </div>
 </section>
 
-<!-- Notícias e Publicações Recentes -->
-<section class="section">
+<!-- Informações Institucionais e Contato Rápido -->
+<section class="section" style="padding: 3rem 0; background-color: #ffffff; border-top: 1px solid var(--color-border);">
   <div class="container">
-    <div class="section-heading-row">
-      <h2 class="section-title">Notícias e Comunicados</h2>
-      <a href="{{ '/noticias/' | relative_url }}" class="link-more">Ver todas as notícias &rarr;</a>
-    </div>
-
-    <div class="posts-list">
-      {% for post in site.posts limit: 3 %}
-        {% include post_card.html %}
-      {% endfor %}
+    <div style="max-width: 1000px; margin: 0; text-align: left; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; background: var(--color-primary-subtle); padding: 1.75rem 2rem; border-radius: var(--radius-md); border: 1px solid var(--color-primary-border);">
+      <div>
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--color-black); margin-bottom: 0.25rem;">
+          Endereço Institucional e Contato
+        </h3>
+        <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 0;">
+          {{ site.data.group.contact.address }} • {{ site.data.group.contact.city_state }} • CEP: {{ site.data.group.contact.cep }}
+        </p>
+        <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-top: 0.25rem; margin-bottom: 0;">
+          Telefone: {{ site.data.group.contact.phone }} • Email: <a href="mailto:{{ site.data.group.contact.email }}" style="font-weight: 600; color: var(--color-primary-dark);">{{ site.data.group.contact.email }}</a>
+        </p>
+      </div>
+      <div>
+        <a href="{{ site.data.group.contact.lattes_group_url }}" target="_blank" rel="noopener noreferrer" class="btn-primary-action">
+          Acessar Espelho CNPq
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Projetos em Andamento -->
-<section class="section section-border-top">
-  <div class="container">
-    <div class="section-heading-row">
-      <h2 class="section-title">Projetos de Pesquisa</h2>
-      <a href="{{ '/projetos/' | relative_url }}" class="link-more">Ver todos os projetos &rarr;</a>
-    </div>
+<style>
+.btn-primary-action {
+  display: inline-block;
+  background-color: var(--color-black);
+  color: #ffffff !important;
+  padding: 0.65rem 1.35rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  border: 1px solid var(--color-black);
+}
 
-    <div class="projects-list">
-      {% assign current_projects = site.projects | where: "status", "Em andamento" %}
-      {% for project in current_projects limit: 3 %}
-        {% include project_card.html %}
-      {% endfor %}
-    </div>
-  </div>
-</section>
+.btn-primary-action:hover {
+  background-color: var(--color-primary-dark);
+  color: #ffffff !important;
+  text-decoration: none !important;
+  border-color: var(--color-primary-dark);
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+</style>

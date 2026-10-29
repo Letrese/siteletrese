@@ -2,14 +2,10 @@
   <div class="container">
     <nav class="navbar" aria-label="Navegação Principal">
       <a href="{{ '/' | relative_url }}" class="site-logo" aria-label="letre+se: grupo de pesquisa em letramento estatístico">
-        <span class="logo-mark">letre<span class="brand-plus">+</span>se</span>
-        <span class="logo-divider" aria-hidden="true"></span>
-        <span class="logo-tagline">
-          <span>grupo de pesquisa em</span>
-          <span>letramento estatístico</span>
-        </span>
+        <img src="{{ '/assets/images/logo-horizontal.png' | relative_url }}" alt="letre+se - grupo de pesquisa em letramento estatístico" style="height: 48px; width: auto; display: block;" />
       </a>
 
+      {% unless page.hide_nav %}
       <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -26,6 +22,7 @@
         <li><a href="{{ '/noticias/' | relative_url }}" class="nav-link {% if page.url contains 'noticias' %}active{% endif %}">Notícias</a></li>
         <li><a href="{{ '/contato/' | relative_url }}" class="nav-link {% if page.url contains 'contato' %}active{% endif %}">Contato</a></li>
       </ul>
+      {% endunless %}
     </nav>
   </div>
 </header>

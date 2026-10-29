@@ -14,7 +14,11 @@ const SITE_DIR = path.join(ROOT_DIR, '_site');
 
 // 1. Limpar e criar diretório _site
 if (fs.existsSync(SITE_DIR)) {
-  fs.rmSync(SITE_DIR, { recursive: true, force: true });
+  try {
+    fs.rmSync(SITE_DIR, { recursive: true, force: true, maxRetries: 3, retryDelay: 100 });
+  } catch (err) {
+    // Se algum arquivo estiver com lock pelo servidor de desenvolvimento, prossegue sobreescrevendo
+  }
 }
 fs.mkdirSync(SITE_DIR, { recursive: true });
 
@@ -26,7 +30,16 @@ const siteConfig = yaml.load(configRaw);
 const isLocal = process.env.NODE_ENV !== 'production';
 const localBaseUrl = isLocal ? '' : (siteConfig.baseurl || '');
 
-const groupData = yaml.load(fs.readFileSync(path.join(ROOT_DIR, '_data', 'group.yml'), 'utf8'));
+const dataDir = path.join(ROOT_DIR, '_data');
+const siteData = {};
+if (fs.existsSync(dataDir)) {
+  fs.readdirSync(dataDir).forEach(file => {
+    if (file.endsWith('.yml') || file.endsWith('.yaml')) {
+      const key = file.replace(/\.(yml|yaml)$/, '');
+      siteData[key] = yaml.load(fs.readFileSync(path.join(dataDir, file), 'utf8'));
+    }
+  });
+}
 
 // 3. Inicializar LiquidJS com suporte a includes e layouts compatíveis com Jekyll
 const engine = new Liquid({
@@ -133,9 +146,7 @@ const siteContext = {
   site: {
     ...siteConfig,
     baseurl: localBaseUrl,
-    data: {
-      group: groupData
-    },
+    data: siteData,
     members,
     projects,
     posts
@@ -230,6 +241,9 @@ async function runBuild() {
   // Copiar assets e admin
   copyRecursive(path.join(ROOT_DIR, 'assets'), path.join(SITE_DIR, 'assets'));
   copyRecursive(path.join(ROOT_DIR, 'admin'), path.join(SITE_DIR, 'admin'));
+  if (fs.existsSync(path.join(ROOT_DIR, 'CNAME'))) {
+    fs.copyFileSync(path.join(ROOT_DIR, 'CNAME'), path.join(SITE_DIR, 'CNAME'));
+  }
 
   console.log('--- Compilação estática concluída com sucesso em _site/ ---');
 }
