@@ -2,7 +2,7 @@
   simple_name: "Renata Souza Bueno"
   role: "Líder do Grupo de Pesquisa"
   titulation: "Doutorado"
-  institution: "Escola Nacional de Ciências Estatísticas - ENCE / IBGE"
+  institution: "ENCE / IBGE"
   category: "Liderança e Coordenação"
   photo: "/assets/images/avatars/avatar-default.svg"
   email: "renata.bueno@ibge.gov.br"
@@ -15,7 +15,7 @@
   simple_name: "Bianca Walsh"
   role: "Vice-Líder do Grupo de Pesquisa"
   titulation: "Doutorado"
-  institution: "Escola Nacional de Ciências Estatísticas - ENCE / IBGE"
+  institution: "ENCE / IBGE"
   category: "Liderança e Coordenação"
   photo: "/assets/images/avatars/avatar-default.svg"
   email: "bianca.walsh@ibge.gov.br"
@@ -28,7 +28,7 @@
   simple_name: "Alexandre Sousa da Silva"
   role: "Pesquisador"
   titulation: "Doutorado"
-  institution: "ENCE / IBGE"
+  institution: "UNIRIO"
   category: "Pesquisadores"
   photo: "/assets/images/avatars/avatar-default.svg"
   interests:
@@ -39,7 +39,7 @@
   simple_name: "Jony Arrais Pinto Junior"
   role: "Pesquisador"
   titulation: "Doutorado"
-  institution: "ENCE / IBGE"
+  institution: "UFF"
   category: "Pesquisadores"
   photo: "/assets/images/avatars/avatar-default.svg"
   interests:
@@ -50,7 +50,7 @@
   simple_name: "Renata Cristina Freire Corrêa"
   role: "Pesquisadora"
   titulation: "Doutorado"
-  institution: "ENCE / IBGE"
+  institution: "IBGE"
   category: "Pesquisadores"
   photo: "/assets/images/avatars/avatar-default.svg"
   interests:
@@ -61,7 +61,7 @@
   simple_name: "Danielle Sampaio Barreiros"
   role: "Pesquisadora"
   titulation: "Mestrado"
-  institution: "ENCE / IBGE"
+  institution: "IBGE"
   category: "Pesquisadores"
   photo: "/assets/images/avatars/avatar-default.svg"
   interests:
@@ -72,7 +72,7 @@
   simple_name: "Guilherme da Costa Garcia"
   role: "Pesquisador"
   titulation: "Mestrado"
-  institution: "ENCE / IBGE"
+  institution: "IBGE"
   category: "Pesquisadores"
   photo: "/assets/images/avatars/avatar-default.svg"
   interests:
@@ -83,7 +83,7 @@
   simple_name: "Geneci Couto da Silva Filho"
   role: "Pesquisador"
   titulation: "Especialização"
-  institution: "ENCE / IBGE"
+  institution: "IBGE"
   category: "Pesquisadores"
   photo: "/assets/images/avatars/avatar-default.svg"
   interests:
