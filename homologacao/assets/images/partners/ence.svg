@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2702"
+   sodipodi:version="0.32"
+   inkscape:version="0.92.1 r15371"
+   width="744.09448"
+   height="1052.3622"
+   version="1.0"
+   sodipodi:docname="Logo-ence.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <metadata
+     id="metadata2707">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Logo ENCE</dc:title>
+        <dc:date>2009-09-01</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Arlindo Pereira</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-sa/3.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs2705">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective2709" />
+    <filter
+       id="filter2399"
+       inkscape:label="filter1">
+      <feGaussianBlur
+         stdDeviation="15"
+         id="feGaussianBlur2401" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     inkscape:window-height="613"
+     inkscape:window-width="802"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     guidetolerance="10.0"
+     gridtolerance="10.0"
+     objecttolerance="10.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     showgrid="false"
+     inkscape:zoom="0.35355339"
+     inkscape:cx="196.46537"
+     inkscape:cy="369.5926"
+     inkscape:window-x="2290"
+     inkscape:window-y="425"
+     inkscape:current-layer="svg2702"
+     inkscape:window-maximized="0" />
+  <path
+     style="fill:#174fbe;fill-opacity:1;stroke:none;stroke-opacity:1"
+     d="M 336.3769,51.73211 L 335.96181,103.61816 L 265.81194,122.71224 L 239.24627,77.882682 L 176.98302,113.99538 L 202.7185,159.24002 L 151.24753,210.711 L 106.00289,185.3906 L 88.154077,216.10715 L 69.890178,247.23878 L 114.71975,273.80444 L 95.625682,344.36948 L 43.739619,344.78456 L 43.739619,416.59486 L 95.625682,417.00994 L 114.71975,487.57497 L 69.890178,513.72555 L 106.00289,576.4039 L 151.24753,550.66842 L 202.7185,602.1394 L 176.98302,647.38403 L 239.66137,683.08164 L 265.81194,638.66717 L 335.96181,657.34615 L 336.3769,709.23221 L 408.60225,709.23221 L 409.01734,657.34615 L 479.58238,638.66717 L 505.73295,683.49672 L 553.05303,656.10089 L 567.99622,647.38403 L 542.67582,602.1394 L 594.14679,550.66842 L 639.39143,575.98882 L 675.08904,513.72555 L 630.67457,487.57497 L 649.35356,417.00994 L 701.23961,416.59486 L 701.23961,344.78456 L 649.35356,344.36948 L 630.67457,273.80444 L 675.50413,247.65387 L 639.39143,184.97552 L 594.14679,210.711 L 542.67582,159.24002 L 567.99622,113.99538 L 505.73295,77.882682 L 479.58238,122.71224 L 409.01734,103.61816 L 408.60225,51.73211 L 336.3769,51.73211 z M 372.48959,159.6551 C 494.32752,159.6551 593.31661,258.64422 593.31661,380.48216 C 593.31661,502.3201 494.32752,601.30921 372.48959,601.30921 C 250.6517,601.30924 151.66262,502.32012 151.66262,380.48216 C 151.66262,258.64422 250.6517,159.6551 372.48959,159.6551 z"
+     id="path3504" />
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:272.81921387px;font-family:'Bitstream Vera Sans';fill:#174fbe;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="284.66089"
+     y="459.36832"
+     id="text3548"
+     transform="scale(1.013576,0.98660583)"><tspan
+       sodipodi:role="line"
+       id="tspan3550"
+       x="284.66089"
+       y="459.36832"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Bitstream Vera Serif';-inkscape-font-specification:'Bitstream Vera Serif';fill:#174fbe;fill-opacity:1">∑</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:384.43701172px;font-family:'Bitstream Vera Sans';fill:#174fbe;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="373.99295"
+     y="467.39716"
+     id="text3552"
+     transform="rotate(10.379569)"><tspan
+       sodipodi:role="line"
+       id="tspan3554"
+       x="373.99295"
+       y="467.39716"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Bitstream Vera Serif';-inkscape-font-specification:'Bitstream Vera Serif';fill:#174fbe;fill-opacity:1">∫</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:214.07778931px;font-style:normal;font-weight:normal;fill:#174fbe;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+     x="56.395191"
+     y="926.35919"
+     id="text3556"><tspan
+       sodipodi:role="line"
+       id="tspan3558"
+       x="56.395191"
+       y="926.35919"
+       style="font-weight:bold;fill:#174fbe;fill-opacity:1;-inkscape-font-specification:Bitstream Vera Sans Bold">ENCE</tspan></text>
+</svg>

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 76" fill="none" role="img" aria-hidden="true">
+  <style>
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+    .poly-float {
+      animation: floatSlow 5.8s ease-in-out infinite;
+      will-change: transform;
+    }
+    .poly-delay-1 { animation-duration: 5.4s; animation-delay: 0s; }
+    .poly-delay-2 { animation-duration: 6.4s; animation-delay: -1.8s; }
+    .poly-delay-3 { animation-duration: 5.9s; animation-delay: -3.2s; }
+    .poly-delay-4 { animation-duration: 6.9s; animation-delay: -4.4s; }
+    @media (prefers-reduced-motion: reduce) {
+      .poly-float { animation: none; }
+    }
+  </style>
+  
+      <g class="poly-shape-node" data-shape-tag="Sala de aula" transform="translate(404, 38) scale(0.42)">
+        <g class="poly-float poly-delay-1">
+          
+    <ellipse cx="0" cy="34" rx="42" ry="14" fill="#0c3e34"/>
+    <path d="M0,-50 L-42,34 A42,14 0 0 0 0,48 Z" fill="#7be0cb"/>
+    <path d="M0,-50 L0,48 A42,14 0 0 0 42,34 Z" fill="#37bfa5"/>
+  
+        </g>
+      </g>
+    
+
+      <g class="poly-shape-node" data-shape-tag="Gráficos" transform="translate(468, 38) scale(0.42)">
+        <g class="poly-float poly-delay-2">
+          
+    <polygon points="0,-48 -42,-24 -42,24 0,48 42,24 42,-24" fill="#921f37"/>
+    <polygon points="0,-48 -42,-24 0,0 42,-24" fill="#ea8b9f"/>
+    <polygon points="-42,-24 0,0 0,48 -42,24" fill="#bf3752"/>
+  
+        </g>
+      </g>
+    
+
+      <g class="poly-shape-node" data-shape-tag="Dados Públicos" transform="translate(532, 38) scale(0.42)">
+        <g class="poly-float poly-delay-3">
+          
+    <polygon points="-38,-44 38,-44 0,0" fill="#b8e8de"/>
+    <polygon points="0,0 38,-44 16,-44" fill="#5fd3bc"/>
+    <polygon points="0,0 -38,44 38,44" fill="#1e8571"/>
+    <polygon points="0,0 38,44 14,44" fill="#125c4e"/>
+  
+        </g>
+      </g>
+    
+
+      <g class="poly-shape-node" data-shape-tag="Formação Docente" transform="translate(596, 38) scale(0.42)">
+        <g class="poly-float poly-delay-4">
+          
+    <g transform="rotate(-28)">
+      <rect x="-24" y="-48" width="48" height="96" rx="24" fill="#125c4e"/>
+      <rect x="-24" y="-48" width="34" height="84" rx="17" fill="#37bfa5"/>
+      <circle cx="-6" cy="-24" r="13" fill="#7be0cb" opacity="0.8"/>
+    </g>
+  
+        </g>
+      </g>
+    
+</svg>

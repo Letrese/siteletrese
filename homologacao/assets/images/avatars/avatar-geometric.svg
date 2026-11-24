@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" fill="none">
+  <!-- Fundo sutil nas cores da marca -->
+  <rect width="120" height="120" rx="20" fill="#eef8f5" />
+  
+  <!-- Composição geométrica minimalista da figura humana -->
+  <!-- Cabeça: círculo geométrico sólido -->
+  <circle cx="60" cy="46" r="20" fill="#125c4e" />
+  
+  <!-- Tronco: base geométrica suave -->
+  <path d="M 28 98 C 28 72, 42 68, 60 68 C 78 68, 92 72, 92 98 Z" fill="#37BFA5" />
+</svg>

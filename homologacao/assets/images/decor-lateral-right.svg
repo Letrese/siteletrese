@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="900" viewBox="0 0 200 900" fill="none">
+  <!-- Padrão geométrico suave lateral direito (Letre+se) -->
+  <!-- Triângulo suave superior -->
+  <polygon points="145,50 160,80 130,80" stroke="#125c4e" stroke-width="1.25" opacity="0.14" stroke-linejoin="round" />
+  
+  <!-- Círculo delineado -->
+  <circle cx="80" cy="175" r="16" stroke="#37BFA5" stroke-width="1.25" opacity="0.16" />
+  
+  <!-- Quadrado inclinado -->
+  <rect x="135" y="280" width="20" height="20" rx="2.5" stroke="#212826" stroke-width="1.2" opacity="0.12" transform="rotate(-15 145 290)" />
+  
+  <!-- Ponto circular preenchido sutil -->
+  <circle cx="75" cy="395" r="4" fill="#37BFA5" opacity="0.18" />
+  
+  <!-- Triângulo delicado invertido -->
+  <polygon points="135,500 155,500 145,520" stroke="#37BFA5" stroke-width="1.2" opacity="0.15" stroke-linejoin="round" />
+  
+  <!-- Símbolo '+' da marca Letre+se -->
+  <line x1="75" y1="615" x2="75" y2="631" stroke="#37BFA5" stroke-width="1.5" stroke-linecap="round" opacity="0.18" />
+  <line x1="67" y1="623" x2="83" y2="623" stroke="#37BFA5" stroke-width="1.5" stroke-linecap="round" opacity="0.18" />
+  
+  <!-- Círculo fino -->
+  <circle cx="140" cy="725" r="14" stroke="#125c4e" stroke-width="1.25" opacity="0.14" />
+  
+  <!-- Quadrado reto pequeno -->
+  <rect x="70" y="830" width="14" height="14" rx="2" stroke="#212826" stroke-width="1.2" opacity="0.12" />
+</svg>

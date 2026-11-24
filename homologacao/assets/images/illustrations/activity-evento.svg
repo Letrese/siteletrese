@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none" role="img" aria-hidden="true">
+  <!-- Fundo Low Poly suave -->
+  <polygon points="0,0 220,0 140,130 0,90" fill="#f3f8f7"/>
+  <polygon points="220,0 440,0 320,110 140,130" fill="#edf9f6"/>
+  <polygon points="440,0 640,0 640,120 490,140 320,110" fill="#f6f9f9"/>
+  <polygon points="0,90 140,130 95,250 0,220" fill="#e6f5f1"/>
+  <polygon points="640,120 640,260 510,240 490,140" fill="#fdf2f4"/>
+  <polygon points="140,130 320,110 340,230 95,250" fill="#f8fbfa"/>
+  <polygon points="320,110 490,140 510,240 340,230" fill="#f2f7f6"/>
+
+  <!-- Terreno / Base 3D Low Poly -->
+  <polygon points="0,220 95,250 180,360 0,360" fill="#d9efe9"/>
+  <polygon points="95,250 340,230 290,360 180,360" fill="#cfe9e2"/>
+  <polygon points="340,230 510,240 460,360 290,360" fill="#e3f3ef"/>
+  <polygon points="510,240 640,260 640,360 460,360" fill="#f7e2e7"/>
+
+  <!-- Sombra projetada no plano -->
+  <polygon points="215,268 325,248 415,274 315,296" fill="#0f172a" opacity="0.08"/>
+
+  <!-- Poliedro Central 3D Low Poly (Turquesa) -->
+  <g>
+    <!-- Topo iluminado -->
+    <polygon points="318,62 246,118 318,136" fill="#7be0cb"/>
+    <polygon points="318,62 318,136 392,118" fill="#37bfa5"/>
+    <!-- Meio-tom esquerdo e direito -->
+    <polygon points="246,118 228,196 318,136" fill="#5fd3bc"/>
+    <polygon points="228,196 318,224 318,136" fill="#2aa38b"/>
+    <polygon points="318,136 318,224 408,196" fill="#1b7f6b"/>
+    <polygon points="318,136 392,118 408,196" fill="#23907a"/>
+    <!-- Base sombreada -->
+    <polygon points="228,196 318,274 318,224" fill="#176d5c"/>
+    <polygon points="318,224 318,274 408,196" fill="#125c4e"/>
+  </g>
+
+  <!-- Cristal 3D Low Poly Esquerdo (Complementar Carmim) -->
+  <g>
+    <polygon points="154,132 118,176 154,186" fill="#e67e93"/>
+    <polygon points="154,132 154,186 190,176" fill="#bf3752"/>
+    <polygon points="118,176 154,234 154,186" fill="#a82b44"/>
+    <polygon points="154,186 154,234 190,176" fill="#831d32"/>
+  </g>
+
+  <!-- Prisma 3D Low Poly Direito (Turquesa claro + Carmim) -->
+  <g>
+    <polygon points="484,126 446,168 484,180" fill="#a8ebe0"/>
+    <polygon points="484,126 484,180 522,168" fill="#37bfa5"/>
+    <polygon points="446,168 484,226 484,180" fill="#228e79"/>
+    <polygon points="484,180 484,226 522,168" fill="#125c4e"/>
+  </g>
+
+  <!-- Pequeno fragmento flutuante -->
+  <g>
+    <polygon points="424,78 404,96 424,104" fill="#f5c6d0"/>
+    <polygon points="424,78 424,104 442,96" fill="#bf3752"/>
+    <polygon points="404,96 424,118 424,104" fill="#921f37"/>
+    <polygon points="424,104 424,118 442,96" fill="#741629"/>
+  </g>
+</svg>

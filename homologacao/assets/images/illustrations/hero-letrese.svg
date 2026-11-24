@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 340" fill="none" role="img" aria-hidden="true">
+  <rect width="480" height="340" rx="16" fill="#f7f9f9"/>
+  <circle cx="385" cy="82" r="58" fill="#edf9f6"/>
+  <circle cx="96" cy="264" r="46" fill="#fdf2f4"/>
+
+  <!-- Grid sutil de fundo -->
+  <g stroke="#dce7e4" stroke-width="1" stroke-dasharray="4 4">
+    <line x1="48" y1="70" x2="432" y2="70"/>
+    <line x1="48" y1="140" x2="432" y2="140"/>
+    <line x1="48" y1="210" x2="432" y2="210"/>
+    <line x1="48" y1="280" x2="432" y2="280"/>
+  </g>
+
+  <!-- Cartão principal (Jornal / Relatório de Dados) -->
+  <rect x="64" y="54" width="248" height="196" rx="12" fill="#ffffff" stroke="#dce7e4" stroke-width="1.5"/>
+  <rect x="84" y="74" width="84" height="10" rx="5" fill="#125c4e"/>
+  <rect x="84" y="92" width="132" height="6" rx="3" fill="#cbd5e1"/>
+  <rect x="84" y="104" width="108" height="6" rx="3" fill="#e2e8f0"/>
+
+  <!-- Gráfico de barras -->
+  <rect x="84" y="176" width="22" height="50" rx="4" fill="#b8e8de"/>
+  <rect x="116" y="152" width="22" height="74" rx="4" fill="#37bfa5"/>
+  <rect x="148" y="132" width="22" height="94" rx="4" fill="#125c4e"/>
+  <rect x="180" y="164" width="22" height="62" rx="4" fill="#bf3752"/>
+  <rect x="212" y="142" width="22" height="84" rx="4" fill="#37bfa5"/>
+  <line x1="78" y1="226" x2="246" y2="226" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Cartão secundário (Mapa estilizado) -->
+  <rect x="250" y="118" width="166" height="150" rx="12" fill="#ffffff" stroke="#dce7e4" stroke-width="1.5"/>
+  <rect x="266" y="134" width="134" height="84" rx="8" fill="#edf9f6"/>
+  <path d="M272 190 C295 168, 315 202, 340 176 C362 154, 378 172, 394 152" stroke="#37bfa5" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <circle cx="305" cy="176" r="6" fill="#bf3752"/>
+  <circle cx="305" cy="176" r="11" stroke="#bf3752" stroke-width="1.5" opacity="0.45"/>
+  <circle cx="364" cy="166" r="5" fill="#125c4e"/>
+  <rect x="266" y="230" width="88" height="7" rx="3.5" fill="#125c4e"/>
+  <rect x="266" y="244" width="60" height="6" rx="3" fill="#cbd5e1"/>
+
+  <!-- Lupa de leitura crítica -->
+  <g transform="translate(178, 198)">
+    <circle cx="38" cy="38" r="28" fill="#ffffff" fill-opacity="0.85" stroke="#125c4e" stroke-width="4"/>
+    <path d="M26 42 L34 33 L42 38 L52 26" stroke="#bf3752" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="59" y1="59" x2="80" y2="80" stroke="#125c4e" stroke-width="6" stroke-linecap="round"/>
+  </g>
+
+  <!-- Sinal + da marca -->
+  <g transform="translate(384, 52)">
+    <rect x="10" y="0" width="6" height="26" rx="3" fill="#37bfa5"/>
+    <rect x="0" y="10" width="26" height="6" rx="3" fill="#37bfa5"/>
+  </g>
+</svg>

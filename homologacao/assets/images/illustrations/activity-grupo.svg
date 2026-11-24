@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none" role="img" aria-hidden="true">
+  <!-- Fundo Low Poly geométrico -->
+  <polygon points="0,0 190,0 130,115 0,95" fill="#f5f8f8"/>
+  <polygon points="190,0 420,0 310,95 130,115" fill="#eef8f5"/>
+  <polygon points="420,0 640,0 640,110 495,125 310,95" fill="#fdf4f6"/>
+  <polygon points="0,95 130,115 80,240 0,210" fill="#eaf6f3"/>
+  <polygon points="130,115 310,95 330,225 80,240" fill="#f7faf9"/>
+  <polygon points="310,95 495,125 530,235 330,225" fill="#f2f7f6"/>
+  <polygon points="495,125 640,110 640,250 530,235" fill="#fbecef"/>
+
+  <!-- Plano inferior facetado -->
+  <polygon points="0,210 80,240 160,360 0,360" fill="#d9efe9"/>
+  <polygon points="80,240 330,225 300,360 160,360" fill="#e6f5f1"/>
+  <polygon points="330,225 530,235 480,360 300,360" fill="#d4ebe5"/>
+  <polygon points="530,235 640,250 640,360 480,360" fill="#f5dfe4"/>
+
+  <!-- Sombra isométrica das barras 3D -->
+  <polygon points="184,264 252,246 470,258 400,284" fill="#0f172a" opacity="0.08"/>
+
+  <!-- Barra 3D Low Poly 1 (Turquesa claro) -->
+  <g>
+    <polygon points="204,174 238,158 272,174 238,190" fill="#9ee8da"/>
+    <polygon points="204,174 238,190 238,256 204,240" fill="#37bfa5"/>
+    <polygon points="238,190 272,174 272,240 238,256" fill="#1d8571"/>
+  </g>
+
+  <!-- Barra 3D Low Poly 2 (Turquesa escuro) -->
+  <g>
+    <polygon points="278,132 312,116 346,132 312,148" fill="#63d4be"/>
+    <polygon points="278,132 312,148 312,256 278,240" fill="#259982"/>
+    <polygon points="312,148 346,132 346,240 312,256" fill="#125c4e"/>
+  </g>
+
+  <!-- Barra 3D Low Poly 3 (Complementar Carmim) -->
+  <g>
+    <polygon points="352,98 386,82 420,98 386,114" fill="#ea8b9f"/>
+    <polygon points="352,98 386,114 386,256 352,240" fill="#bf3752"/>
+    <polygon points="386,114 420,98 420,240 386,256" fill="#8b1e34"/>
+  </g>
+
+  <!-- Barra 3D Low Poly 4 (Turquesa médio) -->
+  <g>
+    <polygon points="426,150 460,134 494,150 460,166" fill="#80dfd0"/>
+    <polygon points="426,150 460,166 460,256 426,240" fill="#37bfa5"/>
+    <polygon points="460,166 494,150 494,240 460,256" fill="#166a59"/>
+  </g>
+
+  <!-- Octaedro Low Poly flutuante -->
+  <g>
+    <polygon points="154,84 128,112 154,120" fill="#f5c6d0"/>
+    <polygon points="154,84 154,120 180,112" fill="#bf3752"/>
+    <polygon points="128,112 154,144 154,120" fill="#921f37"/>
+    <polygon points="154,120 154,144 180,112" fill="#6f1426"/>
+  </g>
+</svg>

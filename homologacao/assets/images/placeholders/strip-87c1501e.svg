@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 76" fill="none" role="img" aria-hidden="true">
+  <style>
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+    .poly-float {
+      animation: floatSlow 5.8s ease-in-out infinite;
+      will-change: transform;
+    }
+    .poly-delay-1 { animation-duration: 5.4s; animation-delay: 0s; }
+    .poly-delay-2 { animation-duration: 6.4s; animation-delay: -1.8s; }
+    .poly-delay-3 { animation-duration: 5.9s; animation-delay: -3.2s; }
+    .poly-delay-4 { animation-duration: 6.9s; animation-delay: -4.4s; }
+    @media (prefers-reduced-motion: reduce) {
+      .poly-float { animation: none; }
+    }
+  </style>
+  
+      <g class="poly-shape-node" data-shape-tag="Mesa-redonda" transform="translate(404, 38) scale(0.42)">
+        <g class="poly-float poly-delay-1">
+          
+    <polygon points="0,-24 23,-7 14,19 -14,19 -23,-7" fill="#7be0cb"/>
+    <polygon points="0,-50 29,-40 48,-15 23,-7 0,-24" fill="#37bfa5"/>
+    <polygon points="0,-50 0,-24 -23,-7 -48,-15 -29,-40" fill="#7be0cb"/>
+    <polygon points="-48,-15 -23,-7 -14,19 -29,40 -48,15" fill="#37bfa5"/>
+    <polygon points="-29,40 -14,19 14,19 29,40 0,50" fill="#0c3e34"/>
+    <polygon points="48,-15 48,15 29,40 14,19 23,-7" fill="#125c4e"/>
+  
+        </g>
+      </g>
+    
+
+      <g class="poly-shape-node" data-shape-tag="Cidadania" transform="translate(468, 38) scale(0.42)">
+        <g class="poly-float poly-delay-2">
+          
+    <polygon points="0,-22 23,16 -23,16" fill="#ea8b9f"/>
+    <polygon points="0,-50 -43,-25 0,-22" fill="#ea8b9f"/>
+    <polygon points="0,-50 0,-22 43,-25" fill="#bf3752"/>
+    <polygon points="-43,-25 -23,16 0,-22" fill="#bf3752"/>
+    <polygon points="43,-25 0,-22 23,16" fill="#921f37"/>
+    <polygon points="-43,-25 -43,25 -23,16" fill="#bf3752"/>
+    <polygon points="43,-25 23,16 43,25" fill="#921f37"/>
+    <polygon points="-43,25 0,50 -23,16" fill="#921f37"/>
+    <polygon points="-23,16 0,50 23,16" fill="#6b1426"/>
+    <polygon points="23,16 0,50 43,25" fill="#6b1426"/>
+  
+        </g>
+      </g>
+    
+
+      <g class="poly-shape-node" data-shape-tag="Currículo" transform="translate(532, 38) scale(0.42)">
+        <g class="poly-float poly-delay-3">
+          
+    <circle cx="0" cy="0" r="45" fill="#1e8571"/>
+    <circle cx="-6" cy="-6" r="39" fill="#5fd3bc"/>
+    <circle cx="-14" cy="-14" r="20" fill="#b8e8de" opacity="0.8"/>
+  
+        </g>
+      </g>
+    
+
+      <g class="poly-shape-node" data-shape-tag="Multiletramentos" transform="translate(596, 38) scale(0.42)">
+        <g class="poly-float poly-delay-4">
+          
+    <polygon points="0,-52 14,-14 52,0 14,14 0,52 -14,14 -52,0 -14,-14" fill="#921f37"/>
+    <polygon points="0,-52 14,-14 0,0 -14,-14" fill="#ea8b9f"/>
+    <polygon points="-52,0 -14,-14 0,0 -14,14" fill="#bf3752"/>
+    <polygon points="0,0 14,-14 52,0 14,14" fill="#bf3752"/>
+  
+        </g>
+      </g>
+    
+</svg>

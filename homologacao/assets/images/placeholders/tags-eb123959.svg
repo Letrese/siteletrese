@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none" role="img" aria-hidden="true">
+  <style>
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+    }
+    @keyframes shadowBreathe {
+      0%, 100% { transform: scale(1); opacity: 0.35; }
+      50% { transform: scale(0.92); opacity: 0.05; }
+    }
+    @keyframes pulseRing {
+      0%, 100% { opacity: 0.45; }
+      50% { opacity: 0.18; }
+    }
+    .poly-float {
+      animation: floatSlow 5.8s ease-in-out infinite;
+      will-change: transform;
+    }
+    .poly-shadow {
+      animation: shadowBreathe 5.8s ease-in-out infinite;
+      transform-origin: center;
+    }
+    .poly-pulse {
+      animation: pulseRing 4.5s ease-in-out infinite;
+    }
+    .poly-delay-1 { animation-duration: 5.4s; animation-delay: 0s; }
+    .poly-delay-2 { animation-duration: 6.4s; animation-delay: -1.8s; }
+    .poly-delay-3 { animation-duration: 5.9s; animation-delay: -3.2s; }
+    .poly-delay-4 { animation-duration: 6.9s; animation-delay: -4.4s; }
+    @media (prefers-reduced-motion: reduce) {
+      .poly-float, .poly-shadow, .poly-pulse { animation: none; }
+    }
+  </style>
+  <defs>
+    <linearGradient id="sky-3943840089" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#061c19"/>
+      <stop offset="100%" stop-color="#0e3a33"/>
+    </linearGradient>
+    <radialGradient id="glow-3943840089" cx="0.6" cy="0.45" r="0.65">
+      <stop offset="0%" stop-color="#37bfa5" stop-opacity="0.18"/>
+      <stop offset="60%" stop-color="#37bfa5" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#sky-3943840089)"/>
+  <rect width="640" height="360" fill="url(#glow-3943840089)"/>
+  <g style="pointer-events: none;">
+    
+    <circle data-orbit-parent="2" data-base-cx="244" data-base-cy="192" cx="244" cy="192" r="102" stroke="rgba(123, 224, 203, 0.62)" stroke-width="1.2" stroke-dasharray="4 6" fill="none"/>
+    <circle data-orbit-parent="2" data-base-cx="244" data-base-cy="192" class="poly-pulse" cx="244" cy="192" r="129" stroke="rgba(123, 224, 203, 0.62)" stroke-width="1" fill="none" opacity="0.5"/>
+  
+    <line data-link-from="0" data-link-to="1" x1="438" y1="142" x2="514" y2="210" stroke="rgba(255, 255, 255, 0.52)" stroke-width="1.15" stroke-dasharray="3 4"/>
+<line data-link-from="1" data-link-to="2" x1="514" y1="210" x2="244" y2="192" stroke="rgba(255, 255, 255, 0.52)" stroke-width="1.15" stroke-dasharray="3 4"/>
+<line data-link-from="2" data-link-to="3" x1="244" y1="192" x2="144" y2="140" stroke="rgba(255, 255, 255, 0.52)" stroke-width="1.15" stroke-dasharray="3 4"/>
+<line data-link-from="3" data-link-to="0" x1="144" y1="140" x2="438" y2="142" stroke="rgba(255, 255, 255, 0.52)" stroke-width="1.15" stroke-dasharray="3 4"/>
+    
+      <line data-sat-line="0" data-ox="-42" data-oy="34" x1="438" y1="142" x2="396" y2="176" stroke="rgba(255, 255, 255, 0.52)" stroke-width="0.9"/>
+      <g data-sat-node="0" data-ox="-42" data-oy="34" transform="translate(396, 176)"><circle cx="0" cy="0" r="3.5" fill="#37bfa5"/></g>
+    
+
+      <line data-sat-line="1" data-ox="-29" data-oy="-20" x1="514" y1="210" x2="485" y2="190" stroke="rgba(255, 255, 255, 0.52)" stroke-width="0.9"/>
+      <g data-sat-node="1" data-ox="-29" data-oy="-20" transform="translate(485, 190)"><polygon points="0,-4.5 4.5,0 0,4.5 -4.5,0" fill="#bf3752"/></g>
+    
+
+      <line data-sat-line="2" data-ox="77" data-oy="-38" x1="244" y1="192" x2="321" y2="154" stroke="rgba(255, 255, 255, 0.52)" stroke-width="0.9"/>
+      <g data-sat-node="2" data-ox="77" data-oy="-38" transform="translate(321, 154)"><polygon points="0,-4.5 4,3.5 -4,3.5" fill="#37bfa5"/></g>
+    
+
+      <line data-sat-line="3" data-ox="22" data-oy="25" x1="144" y1="140" x2="166" y2="165" stroke="rgba(255, 255, 255, 0.52)" stroke-width="0.9"/>
+      <g data-sat-node="3" data-ox="22" data-oy="25" transform="translate(166, 165)"><circle cx="0" cy="0" r="3.5" fill="#bf3752"/></g>
+    
+  </g>
+  
+      <g transform="translate(438, 200)" style="pointer-events: none;">
+        <ellipse class="poly-shadow poly-delay-1" cx="0" cy="0" rx="46" ry="12" fill="#020b0a" opacity="0.35"/>
+      </g>
+      <g class="poly-shape-node" data-shape-idx="0" data-shape-motif="d6" data-shape-tag="Mapas" transform="translate(438, 142) scale(1.04)" opacity="0.92">
+        <g class="poly-float poly-delay-1">
+          
+    <polygon points="0,-46 -42,-22 0,2 42,-22" fill="#ea8b9f"/>
+    <polygon points="-42,-22 0,2 0,48 -42,24" fill="#bf3752"/>
+    <polygon points="0,2 42,-22 42,24 0,48" fill="#6b1426"/>
+  
+        </g>
+      </g>
+    
+
+      <g transform="translate(514, 247)" style="pointer-events: none;">
+        <ellipse class="poly-shadow poly-delay-2" cx="0" cy="0" rx="29" ry="8" fill="#020b0a" opacity="0.35"/>
+      </g>
+      <g class="poly-shape-node" data-shape-idx="1" data-shape-motif="d8" data-shape-tag="Jornais" transform="translate(514, 210) scale(0.66)" opacity="0.96">
+        <g class="poly-float poly-delay-2">
+          
+    <polygon points="0,-52 -42,0 0,10" fill="#b8e8de"/>
+    <polygon points="0,-52 0,10 42,0" fill="#5fd3bc"/>
+    <polygon points="-42,0 0,52 0,10" fill="#1e8571"/>
+    <polygon points="0,10 0,52 42,0" fill="#125c4e"/>
+  
+        </g>
+      </g>
+    
+
+      <g transform="translate(244, 276)" style="pointer-events: none;">
+        <ellipse class="poly-shadow poly-delay-3" cx="0" cy="0" rx="66" ry="18" fill="#020b0a" opacity="0.35"/>
+      </g>
+      <g class="poly-shape-node" data-shape-idx="2" data-shape-motif="d4" data-shape-tag="Oficina" transform="translate(244, 192) scale(1.5)" opacity="1">
+        <g class="poly-float poly-delay-3">
+          
+    <polygon points="0,-52 -46,28 0,44" fill="#7be0cb"/>
+    <polygon points="0,-52 0,44 46,28" fill="#37bfa5"/>
+    <polygon points="-46,28 0,44 46,28 0,14" fill="#0c3e34"/>
+  
+        </g>
+      </g>
+    
+
+      <g transform="translate(144, 178)" style="pointer-events: none;">
+        <ellipse class="poly-shadow poly-delay-4" cx="0" cy="0" rx="30" ry="8" fill="#020b0a" opacity="0.35"/>
+      </g>
+      <g class="poly-shape-node" data-shape-idx="3" data-shape-motif="d10" data-shape-tag="Letramento Estatístico" transform="translate(144, 140) scale(0.68)" opacity="1">
+        <g class="poly-float poly-delay-4">
+          
+    <polygon points="0,-54 -28,-10 0,8" fill="#7be0cb"/>
+    <polygon points="0,-54 0,8 28,-10" fill="#37bfa5"/>
+    <polygon points="0,-54 -46,4 -28,-10" fill="#37bfa5"/>
+    <polygon points="0,-54 28,-10 46,4" fill="#125c4e"/>
+    <polygon points="-46,4 -28,-10 0,8 0,52" fill="#125c4e"/>
+    <polygon points="28,-10 46,4 0,52 0,8" fill="#0c3e34"/>
+  
+        </g>
+      </g>
+    
+</svg>

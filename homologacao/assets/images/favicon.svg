@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Fundo preto oficial da marca Letre+se para máximo contraste em abas claras e escuras -->
+  <rect width="64" height="64" rx="14" fill="#000000" />
+  
+  <!-- O sinal '+' oficial turquesa (#37BFA5) da marca letre+se -->
+  <path d="M 24 12 h 16 v 13 h 12 v 14 h -12 v 13 h -16 v -13 h -12 v -14 h 12 Z" fill="#37BFA5" />
+</svg>

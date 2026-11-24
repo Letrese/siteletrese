@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 76" fill="none" role="img" aria-hidden="true">
+  <style>
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+    .poly-float {
+      animation: floatSlow 5.8s ease-in-out infinite;
+      will-change: transform;
+    }
+    .poly-delay-1 { animation-duration: 5.4s; animation-delay: 0s; }
+    .poly-delay-2 { animation-duration: 6.4s; animation-delay: -1.8s; }
+    .poly-delay-3 { animation-duration: 5.9s; animation-delay: -3.2s; }
+    .poly-delay-4 { animation-duration: 6.9s; animation-delay: -4.4s; }
+    @media (prefers-reduced-motion: reduce) {
+      .poly-float { animation: none; }
+    }
+  </style>
+  
+      <g class="poly-shape-node" data-shape-tag="Oficina" transform="translate(404, 38) scale(0.42)">
+        <g class="poly-float poly-delay-1">
+          
+    <polygon points="0,-52 -46,28 0,44" fill="#7be0cb"/>
+    <polygon points="0,-52 0,44 46,28" fill="#37bfa5"/>
+    <polygon points="-46,28 0,44 46,28 0,14" fill="#0c3e34"/>
+  
+        </g>
+      </g>
+    
+
+      <g class="poly-shape-node" data-shape-tag="Mapas" transform="translate(468, 38) scale(0.42)">
+        <g class="poly-float poly-delay-2">
+          
+    <polygon points="0,-46 -42,-22 0,2 42,-22" fill="#ea8b9f"/>
+    <polygon points="-42,-22 0,2 0,48 -42,24" fill="#bf3752"/>
+    <polygon points="0,2 42,-22 42,24 0,48" fill="#6b1426"/>
+  
+        </g>
+      </g>
+    
+
+      <g class="poly-shape-node" data-shape-tag="Jornais" transform="translate(532, 38) scale(0.42)">
+        <g class="poly-float poly-delay-3">
+          
+    <polygon points="0,-52 -42,0 0,10" fill="#b8e8de"/>
+    <polygon points="0,-52 0,10 42,0" fill="#5fd3bc"/>
+    <polygon points="-42,0 0,52 0,10" fill="#1e8571"/>
+    <polygon points="0,10 0,52 42,0" fill="#125c4e"/>
+  
+        </g>
+      </g>
+    
+
+      <g class="poly-shape-node" data-shape-tag="Letramento Estatístico" transform="translate(596, 38) scale(0.42)">
+        <g class="poly-float poly-delay-4">
+          
+    <polygon points="0,-54 -28,-10 0,8" fill="#7be0cb"/>
+    <polygon points="0,-54 0,8 28,-10" fill="#37bfa5"/>
+    <polygon points="0,-54 -46,4 -28,-10" fill="#37bfa5"/>
+    <polygon points="0,-54 28,-10 46,4" fill="#125c4e"/>
+    <polygon points="-46,4 -28,-10 0,8 0,52" fill="#125c4e"/>
+    <polygon points="28,-10 46,4 0,52 0,8" fill="#0c3e34"/>
+  
+        </g>
+      </g>
+    
+</svg>

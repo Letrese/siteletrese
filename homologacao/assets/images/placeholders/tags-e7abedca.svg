@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none" role="img" aria-hidden="true">
+  <style>
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+    }
+    @keyframes shadowBreathe {
+      0%, 100% { transform: scale(1); opacity: 0.35; }
+      50% { transform: scale(0.92); opacity: 0.05; }
+    }
+    @keyframes pulseRing {
+      0%, 100% { opacity: 0.45; }
+      50% { opacity: 0.18; }
+    }
+    .poly-float {
+      animation: floatSlow 5.8s ease-in-out infinite;
+      will-change: transform;
+    }
+    .poly-shadow {
+      animation: shadowBreathe 5.8s ease-in-out infinite;
+      transform-origin: center;
+    }
+    .poly-pulse {
+      animation: pulseRing 4.5s ease-in-out infinite;
+    }
+    .poly-delay-1 { animation-duration: 5.4s; animation-delay: 0s; }
+    .poly-delay-2 { animation-duration: 6.4s; animation-delay: -1.8s; }
+    .poly-delay-3 { animation-duration: 5.9s; animation-delay: -3.2s; }
+    .poly-delay-4 { animation-duration: 6.9s; animation-delay: -4.4s; }
+    @media (prefers-reduced-motion: reduce) {
+      .poly-float, .poly-shadow, .poly-pulse { animation: none; }
+    }
+  </style>
+  <defs>
+    <linearGradient id="sky-3886804426" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#061c19"/>
+      <stop offset="100%" stop-color="#0e3a33"/>
+    </linearGradient>
+    <radialGradient id="glow-3886804426" cx="0.6" cy="0.45" r="0.65">
+      <stop offset="0%" stop-color="#37bfa5" stop-opacity="0.18"/>
+      <stop offset="60%" stop-color="#37bfa5" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#sky-3886804426)"/>
+  <rect width="640" height="360" fill="url(#glow-3886804426)"/>
+  <g style="pointer-events: none;">
+    
+    <circle data-orbit-parent="2" data-base-cx="436" data-base-cy="190" cx="436" cy="190" r="102" stroke="rgba(123, 224, 203, 0.62)" stroke-width="1.2" stroke-dasharray="4 6" fill="none"/>
+    <circle data-orbit-parent="2" data-base-cx="436" data-base-cy="190" class="poly-pulse" cx="436" cy="190" r="129" stroke="rgba(123, 224, 203, 0.62)" stroke-width="1" fill="none" opacity="0.5"/>
+  
+    <line data-link-from="0" data-link-to="1" x1="156" y1="132" x2="272" y2="152" stroke="rgba(255, 255, 255, 0.52)" stroke-width="1.15" stroke-dasharray="3 4"/>
+<line data-link-from="1" data-link-to="2" x1="272" y1="152" x2="436" y2="190" stroke="rgba(255, 255, 255, 0.52)" stroke-width="1.15" stroke-dasharray="3 4"/>
+<line data-link-from="2" data-link-to="3" x1="436" y1="190" x2="325" y2="232" stroke="rgba(255, 255, 255, 0.52)" stroke-width="1.15" stroke-dasharray="3 4"/>
+<line data-link-from="3" data-link-to="0" x1="325" y1="232" x2="156" y2="132" stroke="rgba(255, 255, 255, 0.52)" stroke-width="1.15" stroke-dasharray="3 4"/>
+    
+      <line data-sat-line="0" data-ox="43" data-oy="-7" x1="156" y1="132" x2="199" y2="125" stroke="rgba(255, 255, 255, 0.52)" stroke-width="0.9"/>
+      <g data-sat-node="0" data-ox="43" data-oy="-7" transform="translate(199, 125)"><circle cx="0" cy="0" r="3.5" fill="#37bfa5"/></g>
+    
+
+      <line data-sat-line="1" data-ox="8" data-oy="43" x1="272" y1="152" x2="280" y2="195" stroke="rgba(255, 255, 255, 0.52)" stroke-width="0.9"/>
+      <g data-sat-node="1" data-ox="8" data-oy="43" transform="translate(280, 195)"><polygon points="0,-4.5 4.5,0 0,4.5 -4.5,0" fill="#bf3752"/></g>
+    
+
+      <line data-sat-line="2" data-ox="-96" data-oy="0" x1="436" y1="190" x2="340" y2="190" stroke="rgba(255, 255, 255, 0.52)" stroke-width="0.9"/>
+      <g data-sat-node="2" data-ox="-96" data-oy="0" transform="translate(340, 190)"><polygon points="0,-4.5 4,3.5 -4,3.5" fill="#37bfa5"/></g>
+    
+
+      <line data-sat-line="3" data-ox="5" data-oy="-26" x1="325" y1="232" x2="330" y2="206" stroke="rgba(255, 255, 255, 0.52)" stroke-width="0.9"/>
+      <g data-sat-node="3" data-ox="5" data-oy="-26" transform="translate(330, 206)"><circle cx="0" cy="0" r="3.5" fill="#bf3752"/></g>
+    
+  </g>
+  
+      <g transform="translate(156, 170)" style="pointer-events: none;">
+        <ellipse class="poly-shadow poly-delay-1" cx="0" cy="0" rx="30" ry="8" fill="#020b0a" opacity="0.35"/>
+      </g>
+      <g class="poly-shape-node" data-shape-idx="0" data-shape-motif="hourglass" data-shape-tag="Dados Públicos" transform="translate(156, 132) scale(0.68)" opacity="0.9">
+        <g class="poly-float poly-delay-1">
+          
+    <polygon points="-38,-44 38,-44 0,0" fill="#b8e8de"/>
+    <polygon points="0,0 38,-44 16,-44" fill="#5fd3bc"/>
+    <polygon points="0,0 -38,44 38,44" fill="#1e8571"/>
+    <polygon points="0,0 38,44 14,44" fill="#125c4e"/>
+  
+        </g>
+      </g>
+    
+
+      <g transform="translate(272, 210)" style="pointer-events: none;">
+        <ellipse class="poly-shadow poly-delay-2" cx="0" cy="0" rx="46" ry="12" fill="#020b0a" opacity="0.35"/>
+      </g>
+      <g class="poly-shape-node" data-shape-idx="1" data-shape-motif="hexPrism" data-shape-tag="Gráficos" transform="translate(272, 152) scale(1.04)" opacity="0.94">
+        <g class="poly-float poly-delay-2">
+          
+    <polygon points="0,-48 -42,-24 -42,24 0,48 42,24 42,-24" fill="#921f37"/>
+    <polygon points="0,-48 -42,-24 0,0 42,-24" fill="#ea8b9f"/>
+    <polygon points="-42,-24 0,0 0,48 -42,24" fill="#bf3752"/>
+  
+        </g>
+      </g>
+    
+
+      <g transform="translate(436, 274)" style="pointer-events: none;">
+        <ellipse class="poly-shadow poly-delay-3" cx="0" cy="0" rx="66" ry="18" fill="#020b0a" opacity="0.35"/>
+      </g>
+      <g class="poly-shape-node" data-shape-idx="2" data-shape-motif="cone" data-shape-tag="Sala de aula" transform="translate(436, 190) scale(1.5)" opacity="1">
+        <g class="poly-float poly-delay-3">
+          
+    <ellipse cx="0" cy="34" rx="42" ry="14" fill="#0c3e34"/>
+    <path d="M0,-50 L-42,34 A42,14 0 0 0 0,48 Z" fill="#7be0cb"/>
+    <path d="M0,-50 L0,48 A42,14 0 0 0 42,34 Z" fill="#37bfa5"/>
+  
+        </g>
+      </g>
+    
+
+      <g transform="translate(325, 267)" style="pointer-events: none;">
+        <ellipse class="poly-shadow poly-delay-4" cx="0" cy="0" rx="27" ry="7" fill="#020b0a" opacity="0.35"/>
+      </g>
+      <g class="poly-shape-node" data-shape-idx="3" data-shape-motif="capsule" data-shape-tag="Formação Docente" transform="translate(325, 232) scale(0.62)" opacity="1">
+        <g class="poly-float poly-delay-4">
+          
+    <g transform="rotate(-28)">
+      <rect x="-24" y="-48" width="48" height="96" rx="24" fill="#125c4e"/>
+      <rect x="-24" y="-48" width="34" height="84" rx="17" fill="#37bfa5"/>
+      <circle cx="-6" cy="-24" r="13" fill="#7be0cb" opacity="0.8"/>
+    </g>
+  
+        </g>
+      </g>
+    
+</svg>
